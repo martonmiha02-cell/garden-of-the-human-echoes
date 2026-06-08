@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 106" role="img" aria-label="Elisava — Universitat de Vic — Universitat Central de Catalunya">
+  <title>Elisava — Universitat de Vic — Universitat Central de Catalunya</title>
+  <!-- Replace this file with the official Elisava SVG if available -->
+  <text
+    x="0" y="60"
+    font-family="system-ui, 'Helvetica Neue', Helvetica, Arial, sans-serif"
+    font-size="62"
+    fill="#000000"
+  ><tspan font-weight="900">U</tspan><tspan font-weight="700" dx="10"> ELISAVA</tspan></text>
+  <text
+    x="2" y="82"
+    font-family="system-ui, 'Helvetica Neue', Helvetica, Arial, sans-serif"
+    font-size="17"
+    font-weight="400"
+    fill="#000000"
+    letter-spacing="1.8"
+  >UNIVERSITAT DE VIC</text>
+  <text
+    x="2" y="104"
+    font-family="system-ui, 'Helvetica Neue', Helvetica, Arial, sans-serif"
+    font-size="17"
+    font-weight="400"
+    fill="#000000"
+    letter-spacing="1.8"
+  >UNIVERSITAT CENTRAL DE CATALUNYA</text>
+</svg>

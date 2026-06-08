@@ -1,0 +1,9 @@
+# Raw source files — not needed for deployment
+assets/gallery/
+
+# macOS
+.DS_Store
+**/.DS_Store
+
+# Editor
+.vscode/

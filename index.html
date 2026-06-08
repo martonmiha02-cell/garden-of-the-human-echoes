@@ -1,0 +1,1034 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Garden of the Human Echoes</title>
+  <meta name="description" content="An installation in which a living plant authors its own representation, exposing the anthropocentric bias embedded in generative diffusion models." />
+
+  <!-- Open Graph -->
+  <meta property="og:title"       content="The Garden of the Human Echoes" />
+  <meta property="og:description" content="An installation in which a living plant authors its own representation, exposing the anthropocentric bias embedded in generative diffusion models." />
+  <meta property="og:image"       content="assets/hero-poster.jpg" />
+  <meta property="og:type"        content="website" />
+  <meta property="og:url"         content="https://[your-domain.com]" />
+  <meta property="og:site_name"   content="The Garden of the Human Echoes" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card"        content="summary_large_image" />
+  <meta name="twitter:title"       content="The Garden of the Human Echoes" />
+  <meta name="twitter:description" content="An installation in which a living plant authors its own representation, exposing the anthropocentric bias embedded in generative diffusion models." />
+  <meta name="twitter:image"       content="assets/hero-poster.jpg" />
+  <meta name="twitter:creator"     content="@marcimiha" />
+
+  <link rel="stylesheet" href="styles.css" />
+  <script src="three.min.js"></script>
+  <script src="GLTFLoader.js"></script>
+  <script src="OrbitControls.js"></script>
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════════════════════
+       HERO
+  ═══════════════════════════════════════════════════════ -->
+  <section id="hero" class="hero" aria-label="Introduction">
+
+    <div class="hero__media" aria-hidden="true">
+      <video
+        class="hero__video"
+        autoplay
+        muted
+        loop
+        playsinline
+        poster="assets/hero-poster.jpg"
+      >
+        <source src="assets/hero-loop.mp4" type="video/mp4" />
+      </video>
+      <div class="hero__overlay"></div>
+    </div>
+
+    <div class="hero__content">
+      <h1 class="hero__title">The Garden<br>of the Human<br>Echoes</h1>
+      <p class="hero__subtitle">An installation in which a living plant authors its own representation.</p>
+    </div>
+
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════════════════
+       STATEMENT — no heading per design
+  ═══════════════════════════════════════════════════════ -->
+  <section id="statement" class="statement reveal-section" aria-label="Project statement">
+    <div class="container">
+
+      <p class="statement__abstract reveal-el">
+        The Garden of the Human Echoes is a project that exposes the anthropocentric bias
+        embedded in generative diffusion models and attempts to subvert it by building an
+        artifact in which human authorship is removed as far as the technology allows.
+        Through systematic testing, the project begins by demonstrating that these models
+        impose human ways of seeing onto every image they produce, regardless of instruction.
+        It then proposes an alternative in the form of an installation in which a living plant
+        authors its own representation. Using a Playtronica Biotron, the plant's bioelectrical
+        and light signals are translated simultaneously into a generative text prompt and sound,
+        whose waveform becomes the visual input for a real-time StreamDiffusion process. The
+        outcome establishes whether anthropocentric bias in diffusion models is structural
+        rather than superficial, tests whether a living organism can be placed in the position
+        of author. The objective, put plainly, is to make the invisible process behind these
+        systems visible and to open a conversation about what anthropocentrism in AI actually means.
+      </p>
+
+      <dl class="statement__meta reveal-el" aria-label="Project metadata">
+        <div class="meta-row">
+          <dt>Author and creator</dt>
+          <dd>Marton Miha</dd>
+        </div>
+        <div class="meta-row">
+          <dt>Supervisors</dt>
+          <dd>Agustina Palazzo, Marta Handenawer</dd>
+        </div>
+        <div class="meta-row">
+          <dt>Year</dt>
+          <dd>January 2026 – June 2026</dd>
+        </div>
+      </dl>
+
+    </div>
+  </section>
+
+
+
+
+  <!-- ═══════════════════════════════════════════════════════
+       ARTIFACT — 3D MODEL CAROUSEL
+  ═══════════════════════════════════════════════════════ -->
+  <section id="artifact" class="artifact reveal-section" aria-labelledby="artifact-heading">
+    <div class="container">
+
+      <h2 class="section-heading reveal-el" id="artifact-heading">Artifact</h2>
+
+      <!-- Annotated installation image — hover numbers for details + 3D model -->
+      <div class="artifact-map reveal-el">
+        <img
+          src="assets/hf_20260606_222748_c84aace2-c280-4fe7-99a0-ee7efc450d5b.png"
+          alt="Full view of The Garden of the Human Echoes installation: plant, Biotron sensor, computer, and display"
+          class="artifact-map__img"
+        />
+
+        <!-- 1 — Plant (right side) -->
+        <div class="hotspot hotspot--left" style="left:78%;top:44%;">
+          <span class="hotspot__number">1</span>
+          <div class="hotspot__tooltip">
+            <canvas class="hotspot__canvas" data-src="assets/model1.glb"></canvas>
+            <div class="hotspot__body">
+              <p class="hotspot__title">The Plant</p>
+              <p class="hotspot__text">[Paste description here]</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2 — Biotron (centre) -->
+        <div class="hotspot hotspot--above" style="left:50%;top:60%;">
+          <span class="hotspot__number">2</span>
+          <div class="hotspot__tooltip">
+            <canvas class="hotspot__canvas" data-src="assets/model2.glb"></canvas>
+            <div class="hotspot__body">
+              <p class="hotspot__title">The Biotron</p>
+              <p class="hotspot__text">[Paste description here]</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3 — Computer (far left) -->
+        <div class="hotspot" style="left:7%;top:58%;">
+          <span class="hotspot__number">3</span>
+          <div class="hotspot__tooltip">
+            <div class="hotspot__body hotspot__body--no-model">
+              <p class="hotspot__title">The Computer</p>
+              <p class="hotspot__text">[Paste description here]</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4 — Display (upper left) -->
+        <div class="hotspot" style="left:22%;top:25%;">
+          <span class="hotspot__number">4</span>
+          <div class="hotspot__tooltip">
+            <div class="hotspot__body hotspot__body--no-model">
+              <p class="hotspot__title">The Display</p>
+              <p class="hotspot__text">[Paste description here]</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════════════════
+       02 — PROCESS
+  ═══════════════════════════════════════════════════════ -->
+  <section id="process" class="process reveal-section" aria-labelledby="process-heading">
+    <div class="container">
+
+      <h2 class="section-heading reveal-el" id="process-heading">Process</h2>
+
+      <div class="prose reveal-el">
+
+        <h3>Anthropocentrism in AI Image Generation</h3>
+        <p>When I first started thinking about which aspect of AI I wanted to research, I looked back at my work from my first semester, and most of it circled the relationship between AI and nature. That was no accident: nature has always been my way into things, not as something to depict but as a system to learn from. And this course sharpened that instinct, making me realise how many natural resources go into keeping AI systems running, which in turn made me want to show that nature is not just a resource to be consumed. So my questions came from the place they always come from: how does AI process nature? How does it picture it? And what does that picture say about us, as humans?</p>
+        <p>At the start of this project, my ambitions were broader. I wanted to help people think more realistically about their consumption of AI, to support a sense of orientation toward these systems, and to draw attention to the question of sustainability in how they are built and used. Those concerns are still present in the work, but as the research developed they narrowed into something more specific and more testable. The project that emerged pursues three linked aims: establishing whether anthropocentric bias in diffusion models is structural rather than superficial, testing whether a living organism can be placed in the position of author. The objective, put plainly, is to make the invisible process behind these systems visible and to open a conversation about what anthropocentrism in AI actually means.</p>
+        <p>AI image generation doesn't just produce images of nature, it produces images of nature as seen by a very particular kind of observer, one shaped entirely by human training data, human aesthetic preferences, and human ideas about what a good image looks like. These systems make compositional choices the way a trained human eye would. They reach for focal points, deliberate lighting, and a recognisable frame. They produce images that feel authored, even when the prompt asks for something that has no author in that sense. The word for this condition is anthropocentrism: the assumption that the human perspective is the natural centre of meaning, value, and representation. In this context, anthropocentrism refers to the structural privileging of human perception as the default framework for representation.</p>
+        <p>Three bodies of research laid the foundation of my initial standpoint. According to Alkhateeb et al. (2025), generative AI frequently falls back on familiar Western European pastoral styles when generating landscapes, regardless of what the prompt instructs. Gould et al. (2024) show that AI systems tend to frame nature in instrumental terms, as resource, playground, or gift, always in relation to human use rather than as an independent subject with its own agency. Hupont et al. (2024) introduce the concept of the Synocene as a way to move beyond the Anthropocene in human-nature-AI relations, arguing for a fundamental shift in how AI systems are designed to relate to non-human entities.</p>
+        <p>The theoretical frame that kept pulling me back was N. Katherine Hayles's posthumanism. In <em>How We Became Posthuman</em> (2000), Hayles argues that cognition is not a uniquely human property, it is distributed between humans, technology, and environment, and the boundary between human and non-human is culturally constructed rather than natural. Applied to diffusion models, this reveals something precise: these systems encode a particular way of seeing, one in which the non-human exists as backdrop, never as a perspective from which to look. James Bridle's <em>Ways of Being</em> (2022) extends this further, arguing for a radical expansion of what we consider intelligence and agency, one that includes animals, plants, and ecosystems. Both frame the same problem this project is trying to make visible: the assumption that human cognition is the only kind that counts.</p>
+        <p>The scientific literature on plant intelligence pushes back from the other direction. Mancuso and Viola (2015) argue that cultural prejudice, not scientific evidence, leads us to underestimate plant agency. Gagliano (2018) treats plants as subjects, entities that sense, respond, communicate, and adapt. Calvo et al. (2020) go further, arguing that plants exhibit forms of cognition that challenge the boundaries of what we consider intelligence. Once you take that seriously, the question of who gets to author an image stops being technical and becomes ethical.</p>
+        <p>These frameworks come together in a single question with two movements: how is anthropocentric bias structurally embedded in diffusion models, and is it possible to subvert it by replacing human authorship with a living organism? The first half asks whether the bias is real, where it comes from, and whether it can be removed through prompting. The second half is constructive, asking whether an alternative is possible. The two are logically dependent, because the second only becomes meaningful once the first establishes that the bias is structural rather than superficial. If better prompting could resolve it, there would be no need to change the author.</p>
+
+        <h3>What the testing revealed</h3>
+        <p>Before building anything, I needed to establish whether the bias was real, structural, and resistant to correction through prompting alone.</p>
+        <p>Diffusion models are what sit behind the most widely used image generation tools today. Stable Diffusion, Midjourney, DALL-E 3, and Flux — the systems examined in this research — are tools a lot of people encounter when they engage with AI-generated imagery today. Diffusion models work by learning to reverse a noise process, gradually recovering a coherent image from random noise, guided by a text prompt. The direction of that recovery is determined by statistical patterns learned from training data. What comes out is shaped by what went in, so understanding what went in is essential to understanding why the outputs look the way they do.</p>
+        <p>The training dataset at the centre of this investigation is LAION-5B, a collection of 5.85 billion image-text pairs built from web scraping and filtered using CLIP, a model developed at OpenAI. CLIP was trained to match images with human-written descriptions of those images. It does not learn what an image is, it learns what humans say about images. The bias is not merely preserved in this process, it is reinforced. Bender et al. (2021) made the same argument about large language models: such systems do not simply reflect their training data, they reproduce and amplify the cultural frameworks embedded in it. The same logic extends from language into vision.</p>
+        <p>To test whether this survived even direct instruction, I ran structured prompting across Flux, Midjourney v7, and DALL-E 3, using prompts that specified explicitly non-human perspectives: a forest from the perspective of a root, a forest from the perspective of a leaf. Each image was assessed against five criteria: whether there was a clear focal point, whether the lighting was aesthetically deliberate, whether the composition assumed a human viewing position, whether the frame was arranged for a standing or crouching human observer, and whether the prompt instruction was followed or overridden by convention.</p>
+        <p>The results were consistent across all three models. Every image was a recognisable genre of human photography, whether nature photography, macro photography, or cinematic landscape, even when the prompt asked for a non-human point of view. The systems did not attempt to imagine non-human experience. They transposed the camera to the requested location and rendered what a human observer would see from there.</p>
+
+        <h3>Lineage</h3>
+        <p>This project sits within a growing body of practice that attempts to shift creative agency toward non-human entities. The conceptual anchor furthest back is John Cage's <em>Silence</em> (1961), particularly its treatment of intention and authorship. Cage's interest in removing compositional intention from musical authorship maps directly onto the question this project asks of images: what remains when the human decision to shape the output is withdrawn as far as possible?</p>
+        <p>More recent precursors in art and design make that question concrete. Sareen and Maes' Elowan (MIT Media Lab, 2018) placed a plant in direct control of a robotic platform, its bioelectrical signals steering movement toward light, with the human stepping back after the initial design. Harold Alec Wilson's <em>linea naturalis</em> (2024) translates plant bioelectrical activity into sound, with composition emerging from biological signals rather than human intention. Srivastava's generative practice connects plants directly to visual software, and her reflection on the difficulty of keeping human aesthetic preference out of the output was a useful friction point for this project.</p>
+        <p>Bowen's <em>Tele-present Wind</em> and <em>Tele-present Water</em> are relevant here for treating non-human environmental signals as the primary substance of an installation, rather than its subject matter or inspiration. Sommerer and Mignonneau's <em>Interactive Plant Growing</em> is one of the earliest instances of a living organism functioning as an active generative input, placing the plant inside a feedback loop rather than in front of a camera. Ikeda's <em>Datamatics</em> makes the case that raw, unmediated data is itself a valid visual language, which runs parallel to the argument this project makes about plant signals: that they do not need to be interpreted or aestheticised to be meaningful. Barrat's <em>plant-art</em> is the most direct technical precursor, translating plant bioelectrical activity into generative image software, and sits closest to the diagnostic starting point of this project.</p>
+
+        <h3>Iterations toward a non-human author</h3>
+        <p>If the bias survives even when language is used to correct it, the question becomes what happens when the language is no longer written by a human at all.</p>
+        <p>My initial direction was to train LoRA (Low-Rank Adaptation) models on natural elements and, using a depth camera in TouchDesigner together with StreamDiffusion, project these onto human body shapes in real time, making visible how the human form remains at the centre even when nature is invoked. I abandoned this early. The gesture felt like a diagram of the argument rather than an encounter with it, too disconnected from the research.</p>
+        <p>The second direction was more generative. Using a Playtronica Biotron connected to a plant, I built a system that translated the plant's bioelectrical and light signals into a generative prompt and produced a new image every minute, accumulating an archive of plant-authored images over time. It demonstrated the concept clearly and was interactive with its environment through the plant.</p>
+        <p>The final direction keeps the same logic and changes the register. Rather than a minute-by-minute archive, the plant generates both the text prompt and the visual input simultaneously and continuously, through a sound-to-waveform translation. The result is a live process rather than a collection of objects: the plant's biological rhythm made visible in the present tense.</p>
+
+        <h3>AI</h3>
+        <p>AI is not a tool used to make the work, but the language of anthropocentrism itself. Models such as Flux, Midjourney v7, DALL·E 3, and Stable Diffusion are systematically tested to expose their anthropocentric bias, while StreamDiffusion functions as the generative core of the final installation. Conceptually, these systems were chosen because they are sites most widely used for image generation. Alongside this, Claude Code was used to support several technical components of the project, including programming tasks, MIDI signal handling, normalisation processes, vocabulary schema logic, and the integration of StreamDiffusion.</p>
+
+        <h3>What the work left open</h3>
+        <p>StreamDiffusion cannot escape the conditions it was trained under. Whatever enters it, whether plant-derived waveforms, physiological vocabularies, or deliberate counter-instructions, is still processed through a model built on human images and human ways of seeing. This persistence is the central outcome of the work.</p>
+        <p>Human decisions remain embedded throughout the process as well. The vocabulary schema was grounded in plant physiology, which is still a human choice. The parameters shaping how the MIDI signal becomes audio were configured by a person.</p>
+        <p>If I were to continue, I would push harder at narrowing those interventions and at expanding what the system can sense beyond surface resistance and light — the Biotron captures only a fraction of the plant's activity.</p>
+
+        <h3>Concluding thoughts</h3>
+        <p>My project tests whether this technology could be used in a way that is not centred on the human view, and the answer it arrives at is no, at least not as the technology currently stands. I tried to build a non-anthropocentric system and I failed. The attempt was not wasted: it showed me that such a system can be polished, pushed, prompted into something less anthropocentric than the default. But the bias does not sit on the surface where prompting can reach it. It is in the training data, scraped from human-made images, and in the architecture that learns from them.</p>
+        <p>To build something genuinely non-anthropocentric, you would need non-human training data and, plausibly, neural networks not modelled on human ways of seeing, and that immediately raises the harder question of whether such a thing is even possible, or even coherent. What would non-human data look like, gathered by whom, legible to whom?</p>
+        <p>And that is the deeper thing the artifact ends up pointing at. Anthropocentrism here is not a bug to be fixed or a setting to be switched off. It is the condition the whole system is built inside. The artifact does not solve that. What it does is make the condition visible, hold it up so it can be seen rather than assumed, and that, in the end, was the whole job.</p>
+
+        <h3>Tools</h3>
+        <ul>
+          <li>Claude Code</li>
+          <li>TouchDesigner</li>
+          <li>StreamDiffusion</li>
+          <li>Flux</li>
+          <li>Midjourney v7</li>
+          <li>DALL-E 3</li>
+          <li>Stable Diffusion</li>
+          <li>Playtronica Biotron</li>
+          <li>Macbook Pro</li>
+        </ul>
+
+        <h3>Special thanks</h3>
+        <p>Hamill Industries, Joan Sandoval, Hanna Kővári, Szonja Vogl, and the class of '26 MAIAD Elisava.</p>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════════════════
+       03 — IMAGES
+  ═══════════════════════════════════════════════════════ -->
+  <section id="images" class="images reveal-section" aria-labelledby="images-heading">
+    <div class="container">
+
+      <h2 class="section-heading reveal-el" id="images-heading">Images</h2>
+
+      <div class="image-grid" role="list" aria-label="Project images">
+
+        <figure class="image-grid__item reveal-el" role="listitem">
+          <button class="image-grid__btn" aria-label="View image 1" data-index="0">
+            <img src="assets/20260423_231643.jpg" alt="The Garden of the Human Echoes — documentation" loading="lazy" sizes="(max-width:600px) 33vw, 20vw" />
+          </button>
+          <figcaption><em>[Caption]</em></figcaption>
+        </figure>
+
+        <figure class="image-grid__item reveal-el" role="listitem">
+          <button class="image-grid__btn" aria-label="View image 2" data-index="1">
+            <img src="assets/20260423_231747.jpg" alt="The Garden of the Human Echoes — documentation" loading="lazy" sizes="(max-width:600px) 33vw, 20vw" />
+          </button>
+          <figcaption><em>[Caption]</em></figcaption>
+        </figure>
+
+        <figure class="image-grid__item reveal-el" role="listitem">
+          <button class="image-grid__btn" aria-label="View image 3" data-index="2">
+            <img src="assets/20260423_231850.jpg" alt="The Garden of the Human Echoes — documentation" loading="lazy" sizes="(max-width:600px) 33vw, 20vw" />
+          </button>
+          <figcaption><em>[Caption]</em></figcaption>
+        </figure>
+
+        <figure class="image-grid__item reveal-el" role="listitem">
+          <button class="image-grid__btn" aria-label="View image 4" data-index="3">
+            <img src="assets/20260423_231951.jpg" alt="The Garden of the Human Echoes — documentation" loading="lazy" sizes="(max-width:600px) 33vw, 20vw" />
+          </button>
+          <figcaption><em>[Caption]</em></figcaption>
+        </figure>
+
+        <figure class="image-grid__item reveal-el" role="listitem">
+          <button class="image-grid__btn" aria-label="View image 5" data-index="4">
+            <img src="assets/20260423_232053.jpg" alt="The Garden of the Human Echoes — documentation" loading="lazy" sizes="(max-width:600px) 33vw, 20vw" />
+          </button>
+          <figcaption><em>[Caption]</em></figcaption>
+        </figure>
+
+        <figure class="image-grid__item reveal-el" role="listitem">
+          <button class="image-grid__btn" aria-label="View image 6" data-index="5">
+            <img src="assets/20260423_232155.jpg" alt="The Garden of the Human Echoes — documentation" loading="lazy" sizes="(max-width:600px) 33vw, 20vw" />
+          </button>
+          <figcaption><em>[Caption]</em></figcaption>
+        </figure>
+
+        <figure class="image-grid__item reveal-el" role="listitem">
+          <button class="image-grid__btn" aria-label="View image 7" data-index="6">
+            <img src="assets/20260502_100301.jpg" alt="The Garden of the Human Echoes — documentation" loading="lazy" sizes="(max-width:600px) 33vw, 20vw" />
+          </button>
+          <figcaption><em>[Caption]</em></figcaption>
+        </figure>
+
+        <figure class="image-grid__item reveal-el" role="listitem">
+          <button class="image-grid__btn" aria-label="View image 8" data-index="7">
+            <img src="assets/20260502_100537.jpg" alt="The Garden of the Human Echoes — documentation" loading="lazy" sizes="(max-width:600px) 33vw, 20vw" />
+          </button>
+          <figcaption><em>[Caption]</em></figcaption>
+        </figure>
+
+        <figure class="image-grid__item reveal-el" role="listitem">
+          <button class="image-grid__btn" aria-label="View image 9" data-index="8">
+            <img src="assets/20260502_100719.jpg" alt="The Garden of the Human Echoes — documentation" loading="lazy" sizes="(max-width:600px) 33vw, 20vw" />
+          </button>
+          <figcaption><em>[Caption]</em></figcaption>
+        </figure>
+
+        <figure class="image-grid__item reveal-el" role="listitem">
+          <button class="image-grid__btn" aria-label="View image 10" data-index="9">
+            <img src="assets/20260502_100821.jpg" alt="The Garden of the Human Echoes — documentation" loading="lazy" sizes="(max-width:600px) 33vw, 20vw" />
+          </button>
+          <figcaption><em>[Caption]</em></figcaption>
+        </figure>
+
+        <figure class="image-grid__item reveal-el" role="listitem">
+          <button class="image-grid__btn" aria-label="View image 11" data-index="10">
+            <img src="assets/20260502_101153.jpg" alt="The Garden of the Human Echoes — documentation" loading="lazy" sizes="(max-width:600px) 33vw, 20vw" />
+          </button>
+          <figcaption><em>[Caption]</em></figcaption>
+        </figure>
+
+        <figure class="image-grid__item reveal-el" role="listitem">
+          <button class="image-grid__btn" aria-label="View image 12" data-index="11">
+            <img src="assets/20260502_101207.jpg" alt="The Garden of the Human Echoes — documentation" loading="lazy" sizes="(max-width:600px) 33vw, 20vw" />
+          </button>
+          <figcaption><em>[Caption]</em></figcaption>
+        </figure>
+
+        <figure class="image-grid__item reveal-el" role="listitem">
+          <button class="image-grid__btn" aria-label="View image 13" data-index="12">
+            <img src="assets/20260502_101215.jpg" alt="The Garden of the Human Echoes — documentation" loading="lazy" sizes="(max-width:600px) 33vw, 20vw" />
+          </button>
+          <figcaption><em>[Caption]</em></figcaption>
+        </figure>
+
+        <figure class="image-grid__item reveal-el" role="listitem">
+          <button class="image-grid__btn" aria-label="View image 14" data-index="13">
+            <img src="assets/20260502_101310.jpg" alt="The Garden of the Human Echoes — documentation" loading="lazy" sizes="(max-width:600px) 33vw, 20vw" />
+          </button>
+          <figcaption><em>[Caption]</em></figcaption>
+        </figure>
+
+        <figure class="image-grid__item reveal-el" role="listitem">
+          <button class="image-grid__btn" aria-label="View image 15" data-index="14">
+            <img src="assets/20260502_101318.jpg" alt="The Garden of the Human Echoes — documentation" loading="lazy" sizes="(max-width:600px) 33vw, 20vw" />
+          </button>
+          <figcaption><em>[Caption]</em></figcaption>
+        </figure>
+
+        <figure class="image-grid__item reveal-el" role="listitem">
+          <button class="image-grid__btn" aria-label="View image 16" data-index="15">
+            <img src="assets/20260502_101412.jpg" alt="The Garden of the Human Echoes — documentation" loading="lazy" sizes="(max-width:600px) 33vw, 20vw" />
+          </button>
+          <figcaption><em>[Caption]</em></figcaption>
+        </figure>
+
+        <figure class="image-grid__item reveal-el" role="listitem">
+          <button class="image-grid__btn" aria-label="View image 17" data-index="16">
+            <img src="assets/20260502_101420.jpg" alt="The Garden of the Human Echoes — documentation" loading="lazy" sizes="(max-width:600px) 33vw, 20vw" />
+          </button>
+          <figcaption><em>[Caption]</em></figcaption>
+        </figure>
+
+        <figure class="image-grid__item reveal-el" role="listitem">
+          <button class="image-grid__btn" aria-label="View image 18" data-index="17">
+            <img src="assets/20260502_101514.jpg" alt="The Garden of the Human Echoes — documentation" loading="lazy" sizes="(max-width:600px) 33vw, 20vw" />
+          </button>
+          <figcaption><em>[Caption]</em></figcaption>
+        </figure>
+
+        <figure class="image-grid__item reveal-el" role="listitem">
+          <button class="image-grid__btn" aria-label="View image 19" data-index="18">
+            <img src="assets/20260502_101548.jpg" alt="The Garden of the Human Echoes — documentation" loading="lazy" sizes="(max-width:600px) 33vw, 20vw" />
+          </button>
+          <figcaption><em>[Caption]</em></figcaption>
+        </figure>
+
+        <figure class="image-grid__item reveal-el" role="listitem">
+          <button class="image-grid__btn" aria-label="View image 20" data-index="19">
+            <img src="assets/20260502_101616.jpg" alt="The Garden of the Human Echoes — documentation" loading="lazy" sizes="(max-width:600px) 33vw, 20vw" />
+          </button>
+          <figcaption><em>[Caption]</em></figcaption>
+        </figure>
+
+        <figure class="image-grid__item reveal-el" role="listitem">
+          <button class="image-grid__btn" aria-label="View image 21" data-index="20">
+            <img src="assets/20260502_101650.jpg" alt="The Garden of the Human Echoes — documentation" loading="lazy" sizes="(max-width:600px) 33vw, 20vw" />
+          </button>
+          <figcaption><em>[Caption]</em></figcaption>
+        </figure>
+
+        <figure class="image-grid__item reveal-el" role="listitem">
+          <button class="image-grid__btn" aria-label="View image 22" data-index="21">
+            <img src="assets/20260502_101719.jpg" alt="The Garden of the Human Echoes — documentation" loading="lazy" sizes="(max-width:600px) 33vw, 20vw" />
+          </button>
+          <figcaption><em>[Caption]</em></figcaption>
+        </figure>
+
+        <figure class="image-grid__item reveal-el" role="listitem">
+          <button class="image-grid__btn" aria-label="View image 23" data-index="22">
+            <img src="assets/20260502_101752.jpg" alt="The Garden of the Human Echoes — documentation" loading="lazy" sizes="(max-width:600px) 33vw, 20vw" />
+          </button>
+          <figcaption><em>[Caption]</em></figcaption>
+        </figure>
+
+        <figure class="image-grid__item reveal-el" role="listitem">
+          <button class="image-grid__btn" aria-label="View image 24" data-index="23">
+            <img src="assets/20260502_101823.jpg" alt="The Garden of the Human Echoes — documentation" loading="lazy" sizes="(max-width:600px) 33vw, 20vw" />
+          </button>
+          <figcaption><em>[Caption]</em></figcaption>
+        </figure>
+
+        <figure class="image-grid__item reveal-el" role="listitem">
+          <button class="image-grid__btn" aria-label="View image 25" data-index="24">
+            <img src="assets/20260502_101913.jpg" alt="The Garden of the Human Echoes — documentation" loading="lazy" sizes="(max-width:600px) 33vw, 20vw" />
+          </button>
+          <figcaption><em>[Caption]</em></figcaption>
+        </figure>
+
+        <figure class="image-grid__item reveal-el" role="listitem">
+          <button class="image-grid__btn" aria-label="View image 26" data-index="25">
+            <img src="assets/20260502_101925.jpg" alt="The Garden of the Human Echoes — documentation" loading="lazy" sizes="(max-width:600px) 33vw, 20vw" />
+          </button>
+          <figcaption><em>[Caption]</em></figcaption>
+        </figure>
+
+        <figure class="image-grid__item reveal-el" role="listitem">
+          <button class="image-grid__btn" aria-label="View image 27" data-index="26">
+            <img src="assets/20260502_102028.jpg" alt="The Garden of the Human Echoes — documentation" loading="lazy" sizes="(max-width:600px) 33vw, 20vw" />
+          </button>
+          <figcaption><em>[Caption]</em></figcaption>
+        </figure>
+
+        <figure class="image-grid__item reveal-el" role="listitem">
+          <button class="image-grid__btn" aria-label="View image 28" data-index="27">
+            <img src="assets/20260502_102115.jpg" alt="The Garden of the Human Echoes — documentation" loading="lazy" sizes="(max-width:600px) 33vw, 20vw" />
+          </button>
+          <figcaption><em>[Caption]</em></figcaption>
+        </figure>
+
+        <figure class="image-grid__item reveal-el" role="listitem">
+          <button class="image-grid__btn" aria-label="View image 29" data-index="28">
+            <img src="assets/20260502_102130.jpg" alt="The Garden of the Human Echoes — documentation" loading="lazy" sizes="(max-width:600px) 33vw, 20vw" />
+          </button>
+          <figcaption><em>[Caption]</em></figcaption>
+        </figure>
+
+        <figure class="image-grid__item reveal-el" role="listitem">
+          <button class="image-grid__btn" aria-label="View image 30" data-index="29">
+            <img src="assets/20260502_102234.jpg" alt="The Garden of the Human Echoes — documentation" loading="lazy" sizes="(max-width:600px) 33vw, 20vw" />
+          </button>
+          <figcaption><em>[Caption]</em></figcaption>
+        </figure>
+
+        <figure class="image-grid__item reveal-el" role="listitem">
+          <button class="image-grid__btn" aria-label="View image 31" data-index="30">
+            <img src="assets/20260502_102317.jpg" alt="The Garden of the Human Echoes — documentation" loading="lazy" sizes="(max-width:600px) 33vw, 20vw" />
+          </button>
+          <figcaption><em>[Caption]</em></figcaption>
+        </figure>
+
+        <figure class="image-grid__item reveal-el" role="listitem">
+          <button class="image-grid__btn" aria-label="View image 32" data-index="31">
+            <img src="assets/20260502_102336.jpg" alt="The Garden of the Human Echoes — documentation" loading="lazy" sizes="(max-width:600px) 33vw, 20vw" />
+          </button>
+          <figcaption><em>[Caption]</em></figcaption>
+        </figure>
+
+        <figure class="image-grid__item reveal-el" role="listitem">
+          <button class="image-grid__btn" aria-label="View image 33" data-index="32">
+            <img src="assets/20260502_102439.jpg" alt="The Garden of the Human Echoes — documentation" loading="lazy" sizes="(max-width:600px) 33vw, 20vw" />
+          </button>
+          <figcaption><em>[Caption]</em></figcaption>
+        </figure>
+
+        <figure class="image-grid__item reveal-el" role="listitem">
+          <button class="image-grid__btn" aria-label="View image 34" data-index="33">
+            <img src="assets/20260502_102519.jpg" alt="The Garden of the Human Echoes — documentation" loading="lazy" sizes="(max-width:600px) 33vw, 20vw" />
+          </button>
+          <figcaption><em>[Caption]</em></figcaption>
+        </figure>
+
+        <figure class="image-grid__item reveal-el" role="listitem">
+          <button class="image-grid__btn" aria-label="View image 35" data-index="34">
+            <img src="assets/20260502_102541.jpg" alt="The Garden of the Human Echoes — documentation" loading="lazy" sizes="(max-width:600px) 33vw, 20vw" />
+          </button>
+          <figcaption><em>[Caption]</em></figcaption>
+        </figure>
+
+        <figure class="image-grid__item reveal-el" role="listitem">
+          <button class="image-grid__btn" aria-label="View image 36" data-index="35">
+            <img src="assets/20260502_102643.jpg" alt="The Garden of the Human Echoes — documentation" loading="lazy" sizes="(max-width:600px) 33vw, 20vw" />
+          </button>
+          <figcaption><em>[Caption]</em></figcaption>
+        </figure>
+
+        <figure class="image-grid__item reveal-el" role="listitem">
+          <button class="image-grid__btn" aria-label="View image 37" data-index="36">
+            <img src="assets/20260502_102722.jpg" alt="The Garden of the Human Echoes — documentation" loading="lazy" sizes="(max-width:600px) 33vw, 20vw" />
+          </button>
+          <figcaption><em>[Caption]</em></figcaption>
+        </figure>
+
+        <figure class="image-grid__item reveal-el" role="listitem">
+          <button class="image-grid__btn" aria-label="View image 38" data-index="37">
+            <img src="assets/20260502_102745.jpg" alt="The Garden of the Human Echoes — documentation" loading="lazy" sizes="(max-width:600px) 33vw, 20vw" />
+          </button>
+          <figcaption><em>[Caption]</em></figcaption>
+        </figure>
+
+        <figure class="image-grid__item reveal-el" role="listitem">
+          <button class="image-grid__btn" aria-label="View image 39" data-index="38">
+            <img src="assets/20260502_102847.jpg" alt="The Garden of the Human Echoes — documentation" loading="lazy" sizes="(max-width:600px) 33vw, 20vw" />
+          </button>
+          <figcaption><em>[Caption]</em></figcaption>
+        </figure>
+
+        <figure class="image-grid__item reveal-el" role="listitem">
+          <button class="image-grid__btn" aria-label="View image 40" data-index="39">
+            <img src="assets/20260502_102924.jpg" alt="The Garden of the Human Echoes — documentation" loading="lazy" sizes="(max-width:600px) 33vw, 20vw" />
+          </button>
+          <figcaption><em>[Caption]</em></figcaption>
+        </figure>
+
+        <figure class="image-grid__item reveal-el" role="listitem">
+          <button class="image-grid__btn" aria-label="View image 41" data-index="40">
+            <img src="assets/20260502_102949.jpg" alt="The Garden of the Human Echoes — documentation" loading="lazy" sizes="(max-width:600px) 33vw, 20vw" />
+          </button>
+          <figcaption><em>[Caption]</em></figcaption>
+        </figure>
+
+        <figure class="image-grid__item reveal-el" role="listitem">
+          <button class="image-grid__btn" aria-label="View image 42" data-index="41">
+            <img src="assets/20260502_103052.jpg" alt="The Garden of the Human Echoes — documentation" loading="lazy" sizes="(max-width:600px) 33vw, 20vw" />
+          </button>
+          <figcaption><em>[Caption]</em></figcaption>
+        </figure>
+
+        <figure class="image-grid__item reveal-el" role="listitem">
+          <button class="image-grid__btn" aria-label="View image 43" data-index="42">
+            <img src="assets/20260502_103126.jpg" alt="The Garden of the Human Echoes — documentation" loading="lazy" sizes="(max-width:600px) 33vw, 20vw" />
+          </button>
+          <figcaption><em>[Caption]</em></figcaption>
+        </figure>
+
+        <figure class="image-grid__item reveal-el" role="listitem">
+          <button class="image-grid__btn" aria-label="View image 44" data-index="43">
+            <img src="assets/20260502_103154.jpg" alt="The Garden of the Human Echoes — documentation" loading="lazy" sizes="(max-width:600px) 33vw, 20vw" />
+          </button>
+          <figcaption><em>[Caption]</em></figcaption>
+        </figure>
+
+        <figure class="image-grid__item reveal-el" role="listitem">
+          <button class="image-grid__btn" aria-label="View image 45" data-index="44">
+            <img src="assets/20260502_103256.jpg" alt="The Garden of the Human Echoes — documentation" loading="lazy" sizes="(max-width:600px) 33vw, 20vw" />
+          </button>
+          <figcaption><em>[Caption]</em></figcaption>
+        </figure>
+
+        <figure class="image-grid__item reveal-el" role="listitem">
+          <button class="image-grid__btn" aria-label="View image 46" data-index="45">
+            <img src="assets/20260502_103330.jpg" alt="The Garden of the Human Echoes — documentation" loading="lazy" sizes="(max-width:600px) 33vw, 20vw" />
+          </button>
+          <figcaption><em>[Caption]</em></figcaption>
+        </figure>
+
+        <figure class="image-grid__item reveal-el" role="listitem">
+          <button class="image-grid__btn" aria-label="View image 47" data-index="46">
+            <img src="assets/20260502_103401.jpg" alt="The Garden of the Human Echoes — documentation" loading="lazy" sizes="(max-width:600px) 33vw, 20vw" />
+          </button>
+          <figcaption><em>[Caption]</em></figcaption>
+        </figure>
+
+        <figure class="image-grid__item reveal-el" role="listitem">
+          <button class="image-grid__btn" aria-label="View image 48" data-index="47">
+            <img src="assets/20260502_103503.jpg" alt="The Garden of the Human Echoes — documentation" loading="lazy" sizes="(max-width:600px) 33vw, 20vw" />
+          </button>
+          <figcaption><em>[Caption]</em></figcaption>
+        </figure>
+
+        <figure class="image-grid__item reveal-el" role="listitem">
+          <button class="image-grid__btn" aria-label="View image 49" data-index="48">
+            <img src="assets/20260502_103532.jpg" alt="The Garden of the Human Echoes — documentation" loading="lazy" sizes="(max-width:600px) 33vw, 20vw" />
+          </button>
+          <figcaption><em>[Caption]</em></figcaption>
+        </figure>
+
+        <figure class="image-grid__item reveal-el" role="listitem">
+          <button class="image-grid__btn" aria-label="View image 50" data-index="49">
+            <img src="assets/20260502_103605.jpg" alt="The Garden of the Human Echoes — documentation" loading="lazy" sizes="(max-width:600px) 33vw, 20vw" />
+          </button>
+          <figcaption><em>[Caption]</em></figcaption>
+        </figure>
+
+        <figure class="image-grid__item reveal-el" role="listitem">
+          <button class="image-grid__btn" aria-label="View image 51" data-index="50">
+            <img src="assets/20260502_103707.jpg" alt="The Garden of the Human Echoes — documentation" loading="lazy" sizes="(max-width:600px) 33vw, 20vw" />
+          </button>
+          <figcaption><em>[Caption]</em></figcaption>
+        </figure>
+
+        <figure class="image-grid__item reveal-el" role="listitem">
+          <button class="image-grid__btn" aria-label="View image 52" data-index="51">
+            <img src="assets/20260502_103734.jpg" alt="The Garden of the Human Echoes — documentation" loading="lazy" sizes="(max-width:600px) 33vw, 20vw" />
+          </button>
+          <figcaption><em>[Caption]</em></figcaption>
+        </figure>
+
+        <figure class="image-grid__item reveal-el" role="listitem">
+          <button class="image-grid__btn" aria-label="View image 53" data-index="52">
+            <img src="assets/20260502_103810.jpg" alt="The Garden of the Human Echoes — documentation" loading="lazy" sizes="(max-width:600px) 33vw, 20vw" />
+          </button>
+          <figcaption><em>[Caption]</em></figcaption>
+        </figure>
+
+        <figure class="image-grid__item reveal-el" role="listitem">
+          <button class="image-grid__btn" aria-label="View image 54" data-index="53">
+            <img src="assets/20260502_103912.jpg" alt="The Garden of the Human Echoes — documentation" loading="lazy" sizes="(max-width:600px) 33vw, 20vw" />
+          </button>
+          <figcaption><em>[Caption]</em></figcaption>
+        </figure>
+
+        <figure class="image-grid__item reveal-el" role="listitem">
+          <button class="image-grid__btn" aria-label="View image 55" data-index="54">
+            <img src="assets/20260502_103939.jpg" alt="The Garden of the Human Echoes — documentation" loading="lazy" sizes="(max-width:600px) 33vw, 20vw" />
+          </button>
+          <figcaption><em>[Caption]</em></figcaption>
+        </figure>
+
+        <figure class="image-grid__item reveal-el" role="listitem">
+          <button class="image-grid__btn" aria-label="View image 56" data-index="55">
+            <img src="assets/20260502_104014.jpg" alt="The Garden of the Human Echoes — documentation" loading="lazy" sizes="(max-width:600px) 33vw, 20vw" />
+          </button>
+          <figcaption><em>[Caption]</em></figcaption>
+        </figure>
+
+        <figure class="image-grid__item reveal-el" role="listitem">
+          <button class="image-grid__btn" aria-label="View image 57" data-index="56">
+            <img src="assets/20260502_104121.jpg" alt="The Garden of the Human Echoes — documentation" loading="lazy" sizes="(max-width:600px) 33vw, 20vw" />
+          </button>
+          <figcaption><em>[Caption]</em></figcaption>
+        </figure>
+
+        <figure class="image-grid__item reveal-el" role="listitem">
+          <button class="image-grid__btn" aria-label="View image 58" data-index="57">
+            <img src="assets/20260502_104141.jpg" alt="The Garden of the Human Echoes — documentation" loading="lazy" sizes="(max-width:600px) 33vw, 20vw" />
+          </button>
+          <figcaption><em>[Caption]</em></figcaption>
+        </figure>
+
+        <figure class="image-grid__item reveal-el" role="listitem">
+          <button class="image-grid__btn" aria-label="View image 59" data-index="58">
+            <img src="assets/20260502_104223.jpg" alt="The Garden of the Human Echoes — documentation" loading="lazy" sizes="(max-width:600px) 33vw, 20vw" />
+          </button>
+          <figcaption><em>[Caption]</em></figcaption>
+        </figure>
+
+        <figure class="image-grid__item reveal-el" role="listitem">
+          <button class="image-grid__btn" aria-label="View image 60" data-index="59">
+            <img src="assets/20260502_104326.jpg" alt="The Garden of the Human Echoes — documentation" loading="lazy" sizes="(max-width:600px) 33vw, 20vw" />
+          </button>
+          <figcaption><em>[Caption]</em></figcaption>
+        </figure>
+
+        <figure class="image-grid__item reveal-el" role="listitem">
+          <button class="image-grid__btn" aria-label="View image 61" data-index="60">
+            <img src="assets/20260502_104343.jpg" alt="The Garden of the Human Echoes — documentation" loading="lazy" sizes="(max-width:600px) 33vw, 20vw" />
+          </button>
+          <figcaption><em>[Caption]</em></figcaption>
+        </figure>
+
+        <figure class="image-grid__item reveal-el" role="listitem">
+          <button class="image-grid__btn" aria-label="View image 62" data-index="61">
+            <img src="assets/20260502_104428.jpg" alt="The Garden of the Human Echoes — documentation" loading="lazy" sizes="(max-width:600px) 33vw, 20vw" />
+          </button>
+          <figcaption><em>[Caption]</em></figcaption>
+        </figure>
+
+        <figure class="image-grid__item reveal-el" role="listitem">
+          <button class="image-grid__btn" aria-label="View image 63" data-index="62">
+            <img src="assets/20260502_104530.jpg" alt="The Garden of the Human Echoes — documentation" loading="lazy" sizes="(max-width:600px) 33vw, 20vw" />
+          </button>
+          <figcaption><em>[Caption]</em></figcaption>
+        </figure>
+
+        <figure class="image-grid__item reveal-el" role="listitem">
+          <button class="image-grid__btn" aria-label="View image 64" data-index="63">
+            <img src="assets/20260502_104545.jpg" alt="The Garden of the Human Echoes — documentation" loading="lazy" sizes="(max-width:600px) 33vw, 20vw" />
+          </button>
+          <figcaption><em>[Caption]</em></figcaption>
+        </figure>
+
+        <figure class="image-grid__item reveal-el" role="listitem">
+          <button class="image-grid__btn" aria-label="View image 65" data-index="64">
+            <img src="assets/20260502_104632.jpg" alt="The Garden of the Human Echoes — documentation" loading="lazy" sizes="(max-width:600px) 33vw, 20vw" />
+          </button>
+          <figcaption><em>[Caption]</em></figcaption>
+        </figure>
+
+        <figure class="image-grid__item reveal-el" role="listitem">
+          <button class="image-grid__btn" aria-label="View image 66" data-index="65">
+            <img src="assets/20260502_104735.jpg" alt="The Garden of the Human Echoes — documentation" loading="lazy" sizes="(max-width:600px) 33vw, 20vw" />
+          </button>
+          <figcaption><em>[Caption]</em></figcaption>
+        </figure>
+
+        <figure class="image-grid__item reveal-el" role="listitem">
+          <button class="image-grid__btn" aria-label="View image 67" data-index="66">
+            <img src="assets/20260502_104748.jpg" alt="The Garden of the Human Echoes — documentation" loading="lazy" sizes="(max-width:600px) 33vw, 20vw" />
+          </button>
+          <figcaption><em>[Caption]</em></figcaption>
+        </figure>
+
+        <figure class="image-grid__item reveal-el" role="listitem">
+          <button class="image-grid__btn" aria-label="View image 68" data-index="67">
+            <img src="assets/20260502_104830.jpg" alt="The Garden of the Human Echoes — documentation" loading="lazy" sizes="(max-width:600px) 33vw, 20vw" />
+          </button>
+          <figcaption><em>[Caption]</em></figcaption>
+        </figure>
+
+        <figure class="image-grid__item reveal-el" role="listitem">
+          <button class="image-grid__btn" aria-label="View image 69" data-index="68">
+            <img src="assets/20260502_104942.jpg" alt="The Garden of the Human Echoes — documentation" loading="lazy" sizes="(max-width:600px) 33vw, 20vw" />
+          </button>
+          <figcaption><em>[Caption]</em></figcaption>
+        </figure>
+
+        <figure class="image-grid__item reveal-el" role="listitem">
+          <button class="image-grid__btn" aria-label="View image 70" data-index="69">
+            <img src="assets/20260502_104950.jpg" alt="The Garden of the Human Echoes — documentation" loading="lazy" sizes="(max-width:600px) 33vw, 20vw" />
+          </button>
+          <figcaption><em>[Caption]</em></figcaption>
+        </figure>
+
+        <figure class="image-grid__item reveal-el" role="listitem">
+          <button class="image-grid__btn" aria-label="View image 71" data-index="70">
+            <img src="assets/20260502_105032.jpg" alt="The Garden of the Human Echoes — documentation" loading="lazy" sizes="(max-width:600px) 33vw, 20vw" />
+          </button>
+          <figcaption><em>[Caption]</em></figcaption>
+        </figure>
+
+        <figure class="image-grid__item reveal-el" role="listitem">
+          <button class="image-grid__btn" aria-label="View image 72" data-index="71">
+            <img src="assets/20260502_105047.jpg" alt="The Garden of the Human Echoes — documentation" loading="lazy" sizes="(max-width:600px) 33vw, 20vw" />
+          </button>
+          <figcaption><em>[Caption]</em></figcaption>
+        </figure>
+
+        <figure class="image-grid__item reveal-el" role="listitem">
+          <button class="image-grid__btn" aria-label="View image 73" data-index="72">
+            <img src="assets/20260502_105149.jpg" alt="The Garden of the Human Echoes — documentation" loading="lazy" sizes="(max-width:600px) 33vw, 20vw" />
+          </button>
+          <figcaption><em>[Caption]</em></figcaption>
+        </figure>
+
+        <figure class="image-grid__item reveal-el" role="listitem">
+          <button class="image-grid__btn" aria-label="View image 74" data-index="73">
+            <img src="assets/20260502_105219.jpg" alt="The Garden of the Human Echoes — documentation" loading="lazy" sizes="(max-width:600px) 33vw, 20vw" />
+          </button>
+          <figcaption><em>[Caption]</em></figcaption>
+        </figure>
+
+        <figure class="image-grid__item reveal-el" role="listitem">
+          <button class="image-grid__btn" aria-label="View image 75" data-index="74">
+            <img src="assets/20260502_105420.jpg" alt="The Garden of the Human Echoes — documentation" loading="lazy" sizes="(max-width:600px) 33vw, 20vw" />
+          </button>
+          <figcaption><em>[Caption]</em></figcaption>
+        </figure>
+
+        <figure class="image-grid__item reveal-el" role="listitem">
+          <button class="image-grid__btn" aria-label="View image 76" data-index="75">
+            <img src="assets/20260502_105625.jpg" alt="The Garden of the Human Echoes — documentation" loading="lazy" sizes="(max-width:600px) 33vw, 20vw" />
+          </button>
+          <figcaption><em>[Caption]</em></figcaption>
+        </figure>
+
+        <figure class="image-grid__item reveal-el" role="listitem">
+          <button class="image-grid__btn" aria-label="View image 77" data-index="76">
+            <img src="assets/20260502_105830.jpg" alt="The Garden of the Human Echoes — documentation" loading="lazy" sizes="(max-width:600px) 33vw, 20vw" />
+          </button>
+          <figcaption><em>[Caption]</em></figcaption>
+        </figure>
+
+        <figure class="image-grid__item reveal-el" role="listitem">
+          <button class="image-grid__btn" aria-label="View image 78" data-index="77">
+            <img src="assets/20260502_110035.jpg" alt="The Garden of the Human Echoes — documentation" loading="lazy" sizes="(max-width:600px) 33vw, 20vw" />
+          </button>
+          <figcaption><em>[Caption]</em></figcaption>
+        </figure>
+
+        <figure class="image-grid__item reveal-el" role="listitem">
+          <button class="image-grid__btn" aria-label="View image 79" data-index="78">
+            <img src="assets/20260502_110240.jpg" alt="The Garden of the Human Echoes — documentation" loading="lazy" sizes="(max-width:600px) 33vw, 20vw" />
+          </button>
+          <figcaption><em>[Caption]</em></figcaption>
+        </figure>
+
+        <figure class="image-grid__item reveal-el" role="listitem">
+          <button class="image-grid__btn" aria-label="View image 80" data-index="79">
+            <img src="assets/20260502_110445.jpg" alt="The Garden of the Human Echoes — documentation" loading="lazy" sizes="(max-width:600px) 33vw, 20vw" />
+          </button>
+          <figcaption><em>[Caption]</em></figcaption>
+        </figure>
+
+        <figure class="image-grid__item reveal-el" role="listitem">
+          <button class="image-grid__btn" aria-label="View image 81" data-index="80">
+            <img src="assets/20260502_110650.jpg" alt="The Garden of the Human Echoes — documentation" loading="lazy" sizes="(max-width:600px) 33vw, 20vw" />
+          </button>
+          <figcaption><em>[Caption]</em></figcaption>
+        </figure>
+
+        <figure class="image-grid__item reveal-el" role="listitem">
+          <button class="image-grid__btn" aria-label="View image 82" data-index="81">
+            <img src="assets/IMG_7924.jpg" alt="The Garden of the Human Echoes — documentation" loading="lazy" sizes="(max-width:600px) 33vw, 20vw" />
+          </button>
+          <figcaption><em>[Caption]</em></figcaption>
+        </figure>
+
+        <figure class="image-grid__item reveal-el" role="listitem">
+          <button class="image-grid__btn" aria-label="View image 83" data-index="82">
+            <img src="assets/IMG_7927.jpg" alt="The Garden of the Human Echoes — documentation" loading="lazy" sizes="(max-width:600px) 33vw, 20vw" />
+          </button>
+          <figcaption><em>[Caption]</em></figcaption>
+        </figure>
+
+        <figure class="image-grid__item reveal-el" role="listitem">
+          <button class="image-grid__btn" aria-label="View image 84" data-index="83">
+            <img src="assets/IMG_7931.jpg" alt="The Garden of the Human Echoes — documentation" loading="lazy" sizes="(max-width:600px) 33vw, 20vw" />
+          </button>
+          <figcaption><em>[Caption]</em></figcaption>
+        </figure>
+
+        <figure class="image-grid__item reveal-el" role="listitem">
+          <button class="image-grid__btn" aria-label="View image 85" data-index="84">
+            <img src="assets/IMG_7980 2.jpg" alt="The Garden of the Human Echoes — documentation" loading="lazy" sizes="(max-width:600px) 33vw, 20vw" />
+          </button>
+          <figcaption><em>[Caption]</em></figcaption>
+        </figure>
+
+        <figure class="image-grid__item image-grid__item--video reveal-el" role="listitem">
+          <div class="image-grid__video-wrap">
+            <video autoplay muted loop playsinline aria-label="Documentation video clip"><source src="assets/IMG_7932 2.mp4" type="video/mp4" /></video>
+          </div>
+          <figcaption><em>[Caption]</em></figcaption>
+        </figure>
+
+        <figure class="image-grid__item image-grid__item--video reveal-el" role="listitem">
+          <div class="image-grid__video-wrap">
+            <video autoplay muted loop playsinline aria-label="Documentation video clip"><source src="assets/IMG_7981 2.mp4" type="video/mp4" /></video>
+          </div>
+          <figcaption><em>[Caption]</em></figcaption>
+        </figure>
+
+        <figure class="image-grid__item image-grid__item--video reveal-el" role="listitem">
+          <div class="image-grid__video-wrap">
+            <video autoplay muted loop playsinline aria-label="Documentation video clip"><source src="assets/IMG_8321.mp4" type="video/mp4" /></video>
+          </div>
+          <figcaption><em>[Caption]</em></figcaption>
+        </figure>
+
+      </div>
+    </div><!-- end .image-grid -->
+
+    <button class="gallery-expand" id="gallery-expand" aria-expanded="false">
+      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true">
+        <polyline points="6,9 12,15 18,9"/>
+      </svg>
+      <span id="gallery-expand-label">Show all images</span>
+    </button>
+
+    <!-- LIGHTBOX -->
+    <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer" hidden>
+      <button class="lightbox__close" id="lightbox-close" aria-label="Close image viewer (Escape)">
+        <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false">
+          <line x1="4" y1="4" x2="20" y2="20" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          <line x1="20" y1="4" x2="4" y2="20" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+      </button>
+      <button class="lightbox__nav lightbox__prev" id="lightbox-prev" aria-label="Previous image (left arrow)">
+        <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false">
+          <polyline points="15,4 7,12 15,20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+      <button class="lightbox__nav lightbox__next" id="lightbox-next" aria-label="Next image (right arrow)">
+        <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false">
+          <polyline points="9,4 17,12 9,20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+      <div class="lightbox__content">
+        <img class="lightbox__img" id="lightbox-img" src="" alt="" />
+        <div class="lightbox__meta">
+          <p class="lightbox__caption" id="lightbox-caption"></p>
+          <p class="lightbox__counter" id="lightbox-counter" aria-live="polite" aria-atomic="true"></p>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════════════════
+       04 — REFERENCES
+  ═══════════════════════════════════════════════════════ -->
+  <section id="references" class="references reveal-section" aria-labelledby="references-heading">
+    <div class="container">
+
+      <h2 class="section-heading reveal-el" id="references-heading">Bibliography</h2>
+
+      <div class="references__body reveal-el">
+
+        <h3 class="references__subhead">Conceptual and theoretical references</h3>
+        <ol class="references__list">
+          <li>Alkhateeb, G., Storie, J., Bell, S., &amp; Suskevics, M. (2025). Virtual imaginative geographies: Generative AI and the representation of landscape imagery. <em>Geographies</em>, 5(1), 9. <a href="https://doi.org/10.3390/geographies5010009" rel="noopener noreferrer" target="_blank">https://doi.org/10.3390/geographies5010009</a></li>
+          <li>Attfield, R. (2018). <em>Environmental Ethics: A Very Short Introduction</em> (2nd ed.). Oxford University Press.</li>
+          <li>Baker, N. R. (2008). Chlorophyll fluorescence: A probe of photosynthesis in vivo. <em>Annual Review of Plant Biology</em>, 59, 89–113. <a href="https://doi.org/10.1146/annurev.arplant.59.032607.092759" rel="noopener noreferrer" target="_blank">https://doi.org/10.1146/annurev.arplant.59.032607.092759</a></li>
+          <li>Bender, E. M., Gebru, T., McMillan-Major, A., &amp; Shmitchell, S. (2021). On the dangers of stochastic parrots: Can language models be too big? In <em>Proceedings of the 2021 ACM Conference on Fairness, Accountability, and Transparency</em> (pp. 610–623). ACM. <a href="https://doi.org/10.1145/3442188.3445922" rel="noopener noreferrer" target="_blank">https://doi.org/10.1145/3442188.3445922</a></li>
+          <li>Bianchi, F., Kalluri, P., Durmus, E., Laurer, M., Suzgun, M., Jurafsky, D., &amp; Hashimoto, T. (2023). Easily accessible text-to-image generation amplifies demographic stereotypes at large scale. In <em>Proceedings of the 2023 ACM Conference on Fairness, Accountability, and Transparency</em> (pp. 1493–1504). ACM. <a href="https://doi.org/10.1145/3593013.3594095" rel="noopener noreferrer" target="_blank">https://doi.org/10.1145/3593013.3594095</a></li>
+          <li>Bridle, J. (2022). <em>Ways of being: Beyond human intelligence</em>. Penguin.</li>
+          <li>Cage, J. (1961). <em>Silence: Lectures and writings</em>. Wesleyan University Press.</li>
+          <li>Calvo, P., Gagliano, M., Souza, G. M., &amp; Trewavas, A. (2020). Plants are intelligent, and here is how. <em>Annals of Botany</em>, 125(1), 11–28. <a href="https://doi.org/10.1093/aob/mcz155" rel="noopener noreferrer" target="_blank">https://doi.org/10.1093/aob/mcz155</a></li>
+          <li>Dominguez-Catena, I., Paternain, D., &amp; Galar, M. (2025). Facial demography analysis of the LAION dataset. In <em>Proceedings of the European Workshop on Algorithmic Fairness</em>. PMLR.</li>
+          <li>Fromm, J., &amp; Lautner, S. (2007). Electrical signals and their physiological significance in plants. <em>Plant, Cell &amp; Environment</em>, 30(3), 249–257. <a href="https://doi.org/10.1111/j.1365-3040.2006.01614.x" rel="noopener noreferrer" target="_blank">https://doi.org/10.1111/j.1365-3040.2006.01614.x</a></li>
+          <li>Gagliano, M. (2018). <em>Thus spoke the plant: A remarkable journey of groundbreaking scientific discoveries and personal encounters with plants</em>. North Atlantic Books.</li>
+          <li>Gould, R. K., Demarest, B., Ivakhiv, A., &amp; Cheney, N. (2024). Nature is resource, playground, and gift: What artificial intelligence reveals about human-nature relationships. <em>PLOS ONE</em>, 19(6), e0297294. <a href="https://doi.org/10.1371/journal.pone.0297294" rel="noopener noreferrer" target="_blank">https://doi.org/10.1371/journal.pone.0297294</a></li>
+          <li>Hayles, N. K. (2000). <em>How we became posthuman: Virtual bodies in cybernetics, literature, and informatics</em>. University of Chicago Press.</li>
+          <li>Hupont, I., Wainer, M., Nester, S., Tissot, S., Iglesias-Blanco, L., &amp; Baldassarri, S. (2024). Synocene, beyond the Anthropocene: De-anthropocentralising human-nature-AI interaction. In <em>Extended Abstracts of the CHI Conference on Human Factors in Computing Systems</em>. ACM. <a href="https://doi.org/10.1145/3613905.3650888" rel="noopener noreferrer" target="_blank">https://doi.org/10.1145/3613905.3650888</a></li>
+          <li>Ma, H., &amp; Wong, H.-C. (2026). A survey of diffusion models: Methods and applications. <em>Applied Sciences</em>, 16(5), 2482.</li>
+          <li>Mancuso, S., &amp; Viola, A. (2015). <em>Brilliant green: The surprising history and science of plant intelligence</em>. Island Press.</li>
+          <li>Miller Cox, J. (2024). Music from plant biosignals. <em>Music Theory Online</em>, 30(1). <a href="https://mtosmt.org/issues/mto.24.30.1/mto.24.30.1.millercox.html" rel="noopener noreferrer" target="_blank">https://mtosmt.org/issues/mto.24.30.1/mto.24.30.1.millercox.html</a></li>
+          <li>Radford, A., Kim, J. W., Hallacy, C., Ramesh, A., Goh, G., Agarwal, S., Sastry, G., Askell, A., Mishkin, P., Clark, J., Krueger, G., &amp; Sutskever, I. (2021). Learning transferable visual models from natural language supervision. <em>International Conference on Machine Learning</em>. <a href="https://arxiv.org/abs/2103.00020" rel="noopener noreferrer" target="_blank">https://arxiv.org/abs/2103.00020</a></li>
+          <li>Struppek, L., Hintersdorf, D., Correia, A. D., Rombach, R., &amp; Kersting, K. (2022). The biased artist: Exploiting cultural biases via homoglyphs in text-guided image generation. <a href="https://arxiv.org/abs/2209.08891" rel="noopener noreferrer" target="_blank">https://arxiv.org/abs/2209.08891</a></li>
+          <li>Taiz, L., &amp; Zeiger, E. (2010). <em>Plant physiology</em> (5th ed.). Sinauer Associates.</li>
+          <li>Torralba, A., &amp; Oliva, A. (2003). Statistics of natural image categories. <em>Network: Computation in Neural Systems</em>, 14(3), 391–412.</li>
+          <li>Trebacz, K., Dziubinska, H., &amp; Krol, E. (2006). Electrical signals in long-distance communication in plants. In F. Baluska, S. Mancuso, &amp; D. Volkmann (Eds.), <em>Communication in plants: Neuronal aspects of plant life</em> (pp. 277–290). Springer. <a href="https://doi.org/10.1007/978-3-540-28516-8" rel="noopener noreferrer" target="_blank">https://doi.org/10.1007/978-3-540-28516-8</a></li>
+          <li>Wang, X., He, Z., &amp; Peng, X. (2024). Artificial-intelligence-generated content with diffusion models: A literature review. <em>Mathematics</em>, 12(7), 977.</li>
+          <li>Xiang, A., Venkit, P. N., Dhal, P., &amp; Yadav, H. (2025). Fair human-centric image dataset for ethical AI benchmarking. <em>Nature</em>, 1–12.</li>
+        </ol>
+
+        <h3 class="references__subhead">Projectual references</h3>
+        <ol class="references__list">
+          <li>Barrat, R. (2017). <em>Plant-art: A guide to making generative art using the electrical activity of plants</em> [GitHub repository]. <a href="https://github.com/robbiebarrat/plant-art" rel="noopener noreferrer" target="_blank">https://github.com/robbiebarrat/plant-art</a></li>
+          <li>Bowen, D. (2011). <em>Tele-present water</em>. <a href="https://www.dwbowen.com/telepresentwater" rel="noopener noreferrer" target="_blank">https://www.dwbowen.com/telepresentwater</a></li>
+          <li>Bowen, D. (2018). <em>Tele-present wind</em>. <a href="https://www.dwbowen.com/tele-present-wind" rel="noopener noreferrer" target="_blank">https://www.dwbowen.com/tele-present-wind</a></li>
+          <li>Buelteman, R. (1999–2006). <em>Through the green fuse: Energetic photograms</em>. Museum of Modern Art.</li>
+          <li>Ikeda, R. (2006–ongoing). <em>Datamatics</em>. <a href="https://www.ryojiikeda.com/project/datamatics/" rel="noopener noreferrer" target="_blank">https://www.ryojiikeda.com/project/datamatics/</a></li>
+          <li>Sareen, H., &amp; Maes, P. (2018). <em>Elowan: A plant-robot hybrid</em>. MIT Media Lab. <a href="https://www.media.mit.edu/projects/elowan-a-plant-robot-hybrid/overview/" rel="noopener noreferrer" target="_blank">https://www.media.mit.edu/projects/elowan-a-plant-robot-hybrid/overview/</a></li>
+          <li>Sommerer, C., &amp; Mignonneau, L. (1992–1993). <em>Interactive plant growing</em>. SIGGRAPH. <a href="https://history.siggraph.org/artwork/christa-sommerer-laurent-mignonneau-interactive-plant-growing/" rel="noopener noreferrer" target="_blank">https://history.siggraph.org/artwork/christa-sommerer-laurent-mignonneau-interactive-plant-growing/</a></li>
+          <li>Srivastava, A. (2024). Plant bioelectricity generative art practice. <em>WePresent</em>. <a href="https://wepresent.wetransfer.com/stories/aditi-srivastava-digital-plant-art" rel="noopener noreferrer" target="_blank">https://wepresent.wetransfer.com/stories/aditi-srivastava-digital-plant-art</a></li>
+          <li>Vișan, S. (2022, January). In depth: Introducing the illusory visual world of Dreamrec. <em>Fabric London</em>. <a href="https://fabriclondon.com/posts/in-depth-introducing-the-illusory-visual-world-of-dreamrec" rel="noopener noreferrer" target="_blank">https://fabriclondon.com/posts/in-depth-introducing-the-illusory-visual-world-of-dreamrec</a></li>
+          <li>Wilson, H. A. (2024). <em>Linea naturalis</em>. Small Gallery, London.</li>
+        </ol>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════════════════
+       FOOTER
+  ═══════════════════════════════════════════════════════ -->
+  <footer class="footer" role="contentinfo">
+    <div class="footer__inner container">
+
+      <a href="https://www.elisava.net/" class="footer__logo-link" aria-label="Elisava — Universitat de Vic — home" target="_blank" rel="noopener noreferrer">
+        <svg
+          class="footer__logo"
+          viewBox="0 0 480 106"
+          role="img"
+          aria-label="Elisava — Universitat de Vic — Universitat Central de Catalunya"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <title>Elisava — Universitat de Vic — Universitat Central de Catalunya</title>
+          <text x="0" y="60"
+            font-family="system-ui, 'Helvetica Neue', Helvetica, Arial, sans-serif"
+            font-size="62" fill="currentColor">
+            <tspan font-weight="900">U</tspan><tspan font-weight="700" dx="10"> ELISAVA</tspan>
+          </text>
+          <text x="2" y="82"
+            font-family="system-ui, 'Helvetica Neue', Helvetica, Arial, sans-serif"
+            font-size="17" font-weight="400" fill="currentColor" letter-spacing="1.8">
+            UNIVERSITAT DE VIC
+          </text>
+          <text x="2" y="104"
+            font-family="system-ui, 'Helvetica Neue', Helvetica, Arial, sans-serif"
+            font-size="17" font-weight="400" fill="currentColor" letter-spacing="1.8">
+            UNIVERSITAT CENTRAL DE CATALUNYA
+          </text>
+        </svg>
+      </a>
+
+      <nav class="footer__social" aria-label="Social media links">
+        <a
+          href="https://www.instagram.com/marcimiha/"
+          class="footer__instagram"
+          aria-label="Instagram: @marcimiha (opens in new tab)"
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          <svg class="footer__ig-icon" viewBox="0 0 24 24" width="18" height="18"
+            fill="none" stroke="currentColor" stroke-width="1.5"
+            stroke-linecap="round" stroke-linejoin="round"
+            aria-hidden="true" focusable="false">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+            <circle cx="12" cy="12" r="4"/>
+            <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none"/>
+          </svg>
+          <span>@marcimiha</span>
+        </a>
+        <a
+          href="mailto:martonmiha02@gmail.com"
+          class="footer__email"
+          aria-label="Email Marton Miha"
+        >
+          <svg viewBox="0 0 24 24" width="18" height="18"
+            fill="none" stroke="currentColor" stroke-width="1.5"
+            stroke-linecap="round" stroke-linejoin="round"
+            aria-hidden="true" focusable="false">
+            <rect x="2" y="4" width="20" height="16" rx="2"/>
+            <polyline points="2,4 12,13 22,4"/>
+          </svg>
+          <span>martonmiha02@gmail.com</span>
+        </a>
+      </nav>
+
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
