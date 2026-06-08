@@ -1,6 +1,8 @@
 # Raw source files — not needed for deployment
 assets/gallery/
+assets/artifact_outputs/
 assets/*.blend
+assets/*.lst
 
 # macOS
 .DS_Store

@@ -248,6 +248,10 @@
       scene.add(pivot);
 
       const loader = new THREE.GLTFLoader();
+      // Required to decode gltfpack meshopt-compressed models
+      if (typeof MeshoptDecoder !== 'undefined') {
+        loader.setMeshoptDecoder(MeshoptDecoder);
+      }
       loader.load(src, (gltf) => {
         const model = gltf.scene;
         const box  = new THREE.Box3().setFromObject(model);

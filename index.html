@@ -21,10 +21,11 @@
   <meta name="twitter:image"       content="assets/hero-poster.jpg" />
   <meta name="twitter:creator"     content="@marcimiha" />
 
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="styles.css?v=10" />
   <script src="three.min.js"></script>
   <script src="GLTFLoader.js"></script>
   <script src="OrbitControls.js"></script>
+  <script src="meshopt_decoder.js?v=2"></script>
 </head>
 <body>
 
@@ -48,8 +49,8 @@
     </div>
 
     <div class="hero__content">
-      <h1 class="hero__title">The Garden<br>of the Human<br>Echoes</h1>
-      <p class="hero__subtitle">An installation in which a living plant authors its own representation.</p>
+      <h1 class="hero__title">The Garden of the<br>Human Echoes</h1>
+      <p class="hero__subtitle">A project in which a living plant authors its own representation.</p>
     </div>
 
   </section>
@@ -65,16 +66,16 @@
         The Garden of the Human Echoes is a project that exposes the anthropocentric bias
         embedded in generative diffusion models and attempts to subvert it by building an
         artifact in which human authorship is removed as far as the technology allows.
-        Through systematic testing, the project begins by demonstrating that these models
-        impose human ways of seeing onto every image they produce, regardless of instruction.
+        Through research and systematic testing, the project demonstrates that these models
+        consistently reproduce human ways of seeing, regardless of how they are prompted.
         It then proposes an alternative in the form of an installation in which a living plant
         authors its own representation. Using a Playtronica Biotron, the plant's bioelectrical
         and light signals are translated simultaneously into a generative text prompt and sound,
-        whose waveform becomes the visual input for a real-time StreamDiffusion process. The
-        outcome establishes whether anthropocentric bias in diffusion models is structural
-        rather than superficial, tests whether a living organism can be placed in the position
-        of author. The objective, put plainly, is to make the invisible process behind these
-        systems visible and to open a conversation about what anthropocentrism in AI actually means.
+        whose waveform becomes the visual input for a real-time generative process. The outcome
+        establishes whether anthropocentric bias in diffusion models is structural rather than
+        superficial and tests whether a living organism can be placed in the position of author.
+        The objective, put plainly, is to make the invisible process behind these systems visible
+        and to open a conversation about what anthropocentrism in AI actually means.
       </p>
 
       <dl class="statement__meta reveal-el" aria-label="Project metadata">
@@ -118,10 +119,10 @@
         <div class="hotspot hotspot--left" style="left:78%;top:44%;">
           <span class="hotspot__number">1</span>
           <div class="hotspot__tooltip">
-            <canvas class="hotspot__canvas" data-src="assets/model1.glb"></canvas>
+            <canvas class="hotspot__canvas" data-src="assets/model1.glb?v=3"></canvas>
             <div class="hotspot__body">
               <p class="hotspot__title">The Plant</p>
-              <p class="hotspot__text">[Paste description here]</p>
+              <p class="hotspot__text">My artifact is only meaningful if a plant's electrical activity is treated as a biological signal rather than noise. Plants produce multiple types of electrical signals across tissue – action, variation, and system potentials – each linked to internal and environmental states (Trebacz et al., 2006). These signals are physiologically significant forms of plant communication and response. The plant is therefore not treated as a passive source of random data, but as an intelligent living system that senses, processes, and reacts to its surroundings in real time (Calvo et al., 2020).</p>
             </div>
           </div>
         </div>
@@ -130,10 +131,10 @@
         <div class="hotspot hotspot--above" style="left:50%;top:60%;">
           <span class="hotspot__number">2</span>
           <div class="hotspot__tooltip">
-            <canvas class="hotspot__canvas" data-src="assets/model2.glb"></canvas>
+            <canvas class="hotspot__canvas" data-src="assets/model2.glb?v=3"></canvas>
             <div class="hotspot__body">
               <p class="hotspot__title">The Biotron</p>
-              <p class="hotspot__text">[Paste description here]</p>
+              <p class="hotspot__text">The sensing device is a Playtronica Biotron, attached to the plant via alligator-clip electrodes on a leaf or stem. It continuously reads two things: the bioelectrical resistance across the plant's surface, and the ambient light level through a sensor on its body. Both are converted into MIDI data and streamed live to the computer via USB. A Python script receives this stream, normalises the values on a scale of 0.0 to 1.0.</p>
             </div>
           </div>
         </div>
@@ -142,9 +143,10 @@
         <div class="hotspot" style="left:7%;top:58%;">
           <span class="hotspot__number">3</span>
           <div class="hotspot__tooltip">
-            <div class="hotspot__body hotspot__body--no-model">
+            <canvas class="hotspot__canvas" data-src="assets/model3.glb?v=3"></canvas>
+            <div class="hotspot__body">
               <p class="hotspot__title">The Computer</p>
-              <p class="hotspot__text">[Paste description here]</p>
+              <p class="hotspot__text">Biotron translates the plant's bioelectrical signals into a prompt system. The prompt combines fixed anti-representational terms (non-hierarchical, no focal point, not representational, formless energetic state) with a scientific vocabulary drawn from plant physiology and photosynthesis literature. A negative prompt blocks the model's default tendencies: photograph, landscape, human, face, aesthetic composition, beautiful, centred subject. The vocabulary comes from a fixed schema mapping signal ranges to scientific terms — bioelectrical (resting membrane potential, rhythmic depolarisation, systemic depolarisation; Trebacz et al., 2006; Fromm &amp; Lautner, 2007) and light (photon scarcity, active electron transport chain, photoinhibition threshold; Baker, 2008) — chosen for physiological accuracy, not atmosphere. Each channel has three registers: low (0.0–0.3), mid (0.3–0.7), high (0.7–1.0). The signal selects the register; word choice within it is random, seeded by the plant's raw MIDI value. Simultaneously, the signal is rendered as real-time audio, producing a waveform that directly translates the plant's electrical state. This waveform is visualised and fed into StreamDiffusion as the source image.</p>
             </div>
           </div>
         </div>
@@ -153,9 +155,10 @@
         <div class="hotspot" style="left:22%;top:25%;">
           <span class="hotspot__number">4</span>
           <div class="hotspot__tooltip">
-            <div class="hotspot__body hotspot__body--no-model">
+            <canvas class="hotspot__canvas" data-src="assets/model4.glb?v=3"></canvas>
+            <div class="hotspot__body">
               <p class="hotspot__title">The Display</p>
-              <p class="hotspot__text">[Paste description here]</p>
+              <p class="hotspot__text">StreamDiffusion takes a live incoming image and transforms it in real time according to a guiding prompt. Here, the incoming image is the visual form of the plant-generated waveform, while the prompt is assembled from the plant-driven vocabulary schema. Both operate simultaneously, allowing the output image to emerge from the interaction between the plant's electrical activity, its translated sound, and the model's generative process. The result is an image that comes from the plant's signal in the most direct sense available: an image grown from the actual shape of its electrical voice, steered by the words its biology generated. The system runs continuously, updating as the plant's state changes. Rather than producing discrete outputs, it functions as a live visual process, the plant's biological rhythm unfolding in real time for as long as the system remains active.</p>
             </div>
           </div>
         </div>
@@ -245,6 +248,62 @@
       <h2 class="section-heading reveal-el" id="images-heading">Images</h2>
 
       <div class="image-grid" role="list" aria-label="Project images">
+
+        <figure class="image-grid__item reveal-el" role="listitem">
+          <button class="image-grid__btn" aria-label="Generative output still 1" data-index="0">
+            <img src="assets/artifact1.jpg" alt="The Garden of the Human Echoes — generative output still" loading="lazy" sizes="(max-width:600px) 33vw, 20vw" />
+          </button>
+          <figcaption><em>[Caption]</em></figcaption>
+        </figure>
+
+        <figure class="image-grid__item reveal-el" role="listitem">
+          <button class="image-grid__btn" aria-label="Generative output still 2" data-index="0">
+            <img src="assets/artifact2.jpg" alt="The Garden of the Human Echoes — generative output still" loading="lazy" sizes="(max-width:600px) 33vw, 20vw" />
+          </button>
+          <figcaption><em>[Caption]</em></figcaption>
+        </figure>
+
+        <figure class="image-grid__item reveal-el" role="listitem">
+          <button class="image-grid__btn" aria-label="Generative output still 3" data-index="0">
+            <img src="assets/artifact3.jpg" alt="The Garden of the Human Echoes — generative output still" loading="lazy" sizes="(max-width:600px) 33vw, 20vw" />
+          </button>
+          <figcaption><em>[Caption]</em></figcaption>
+        </figure>
+
+        <figure class="image-grid__item reveal-el" role="listitem">
+          <button class="image-grid__btn" aria-label="Generative output still 4" data-index="0">
+            <img src="assets/artifact4.jpg" alt="The Garden of the Human Echoes — generative output still" loading="lazy" sizes="(max-width:600px) 33vw, 20vw" />
+          </button>
+          <figcaption><em>[Caption]</em></figcaption>
+        </figure>
+
+        <figure class="image-grid__item reveal-el" role="listitem">
+          <button class="image-grid__btn" aria-label="Generative output still 5" data-index="0">
+            <img src="assets/artifact5.jpg" alt="The Garden of the Human Echoes — generative output still" loading="lazy" sizes="(max-width:600px) 33vw, 20vw" />
+          </button>
+          <figcaption><em>[Caption]</em></figcaption>
+        </figure>
+
+        <figure class="image-grid__item reveal-el" role="listitem">
+          <button class="image-grid__btn" aria-label="Generative output still 6" data-index="0">
+            <img src="assets/artifact6.jpg" alt="The Garden of the Human Echoes — generative output still" loading="lazy" sizes="(max-width:600px) 33vw, 20vw" />
+          </button>
+          <figcaption><em>[Caption]</em></figcaption>
+        </figure>
+
+        <figure class="image-grid__item reveal-el" role="listitem">
+          <button class="image-grid__btn" aria-label="Generative output still 7" data-index="0">
+            <img src="assets/artifact7.jpg" alt="The Garden of the Human Echoes — generative output still" loading="lazy" sizes="(max-width:600px) 33vw, 20vw" />
+          </button>
+          <figcaption><em>[Caption]</em></figcaption>
+        </figure>
+
+        <figure class="image-grid__item reveal-el" role="listitem">
+          <button class="image-grid__btn" aria-label="Generative output still 8" data-index="0">
+            <img src="assets/artifact8.jpg" alt="The Garden of the Human Echoes — generative output still" loading="lazy" sizes="(max-width:600px) 33vw, 20vw" />
+          </button>
+          <figcaption><em>[Caption]</em></figcaption>
+        </figure>
 
         <figure class="image-grid__item reveal-el" role="listitem">
           <button class="image-grid__btn" aria-label="View image 1" data-index="0">
