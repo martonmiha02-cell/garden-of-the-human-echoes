@@ -21,7 +21,9 @@
   <meta name="twitter:image"       content="assets/hero-poster.jpg" />
   <meta name="twitter:creator"     content="@marcimiha" />
 
-  <link rel="stylesheet" href="styles.css?v=15" />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg?v=1" />
+  <meta name="theme-color" content="#23592d" />
+  <link rel="stylesheet" href="styles.css?v=18" />
   <script src="three.min.js"></script>
   <script src="GLTFLoader.js"></script>
   <script src="OrbitControls.js"></script>
@@ -141,7 +143,7 @@
           <div class="hotspot__tooltip">
             <canvas class="hotspot__canvas" data-src="assets/model1.glb?v=3"></canvas>
             <div class="hotspot__body">
-              <p class="hotspot__title">The Plant</p>
+              <p class="hotspot__title">Plant</p>
               <p class="hotspot__text">My artifact is only meaningful if a plant's electrical activity is treated as a biological signal rather than noise. Plants produce multiple types of electrical signals across tissue – action, variation, and system potentials – each linked to internal and environmental states (Trebacz et al., 2006). These signals are physiologically significant forms of plant communication and response. The plant is therefore not treated as a passive source of random data, but as an intelligent living system that senses, processes, and reacts to its surroundings in real time (Calvo et al., 2020).</p>
             </div>
           </div>
@@ -153,7 +155,7 @@
           <div class="hotspot__tooltip">
             <canvas class="hotspot__canvas" data-src="assets/model2.glb?v=3"></canvas>
             <div class="hotspot__body">
-              <p class="hotspot__title">The Biotron</p>
+              <p class="hotspot__title">Biotron</p>
               <p class="hotspot__text">The sensing device is a Playtronica Biotron, attached to the plant via alligator-clip electrodes on a leaf or stem. It continuously reads two things: the bioelectrical resistance across the plant's surface, and the ambient light level through a sensor on its body. Both are converted into MIDI data and streamed live to the computer via USB. A Python script receives this stream, normalises the values on a scale of 0.0 to 1.0.</p>
             </div>
           </div>
@@ -165,7 +167,7 @@
           <div class="hotspot__tooltip">
             <canvas class="hotspot__canvas" data-src="assets/model3.glb?v=3"></canvas>
             <div class="hotspot__body">
-              <p class="hotspot__title">The Computer</p>
+              <p class="hotspot__title">Computer</p>
               <p class="hotspot__text">Biotron translates the plant's bioelectrical signals into a prompt system. The prompt combines fixed anti-representational terms (non-hierarchical, no focal point, not representational, formless energetic state) with a scientific vocabulary drawn from plant physiology and photosynthesis literature. A negative prompt blocks the model's default tendencies: photograph, landscape, human, face, aesthetic composition, beautiful, centred subject. The vocabulary comes from a fixed schema mapping signal ranges to scientific terms — bioelectrical (resting membrane potential, rhythmic depolarisation, systemic depolarisation; Trebacz et al., 2006; Fromm &amp; Lautner, 2007) and light (photon scarcity, active electron transport chain, photoinhibition threshold; Baker, 2008) — chosen for physiological accuracy, not atmosphere. Each channel has three registers: low (0.0–0.3), mid (0.3–0.7), high (0.7–1.0). The signal selects the register; word choice within it is random, seeded by the plant's raw MIDI value. Simultaneously, the signal is rendered as real-time audio, producing a waveform that directly translates the plant's electrical state. This waveform is visualised and fed into StreamDiffusion as the source image.</p>
             </div>
           </div>
@@ -177,7 +179,7 @@
           <div class="hotspot__tooltip">
             <canvas class="hotspot__canvas" data-src="assets/model4.glb?v=3"></canvas>
             <div class="hotspot__body">
-              <p class="hotspot__title">The Display</p>
+              <p class="hotspot__title">Display</p>
               <p class="hotspot__text">StreamDiffusion takes a live incoming image and transforms it in real time according to a guiding prompt. Here, the incoming image is the visual form of the plant-generated waveform, while the prompt is assembled from the plant-driven vocabulary schema. Both operate simultaneously, allowing the output image to emerge from the interaction between the plant's electrical activity, its translated sound, and the model's generative process. The result is an image that comes from the plant's signal in the most direct sense available: an image grown from the actual shape of its electrical voice, steered by the words its biology generated. The system runs continuously, updating as the plant's state changes. Rather than producing discrete outputs, it functions as a live visual process, the plant's biological rhythm unfolding in real time for as long as the system remains active.</p>
             </div>
           </div>

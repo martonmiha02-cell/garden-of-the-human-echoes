@@ -44,6 +44,15 @@
   --color-hairline:       rgba(26, 26, 26, 0.12);
   --color-white:          #ffffff;
 
+  /* Per-section background blocks — earthy / nature tones that pair
+     with the forest green. All light → dark text (off-white only on
+     the green statement). Warms from neutral grey through to brown. */
+  --bg-artifact:    #EAE7DD;   /* warm light grey — matches the artifact image bg (#F0EDE3) */
+  --bg-process:     #E1D4BA;   /* warm sand / tan */
+  --bg-gallery:     #DBCDB5;   /* soft taupe — earthy, calm under images */
+  --bg-references:  #D2C2A0;   /* ochre / khaki — leans toward earth & green */
+  --bg-footer:      #BFAD8B;   /* mid warm brown — grounds the page */
+
   /* Font families */
   --font-title: 'Format 1452', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   --font-body:  'Projekt Blackbird', Georgia, serif;
