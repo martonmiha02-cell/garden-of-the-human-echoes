@@ -358,6 +358,16 @@ button {
   border-top: 1px solid var(--color-hairline);
 }
 
+/* Title sits close to its hint line */
+.artifact .section-heading { margin-bottom: var(--sp-4); }
+
+.artifact-hint {
+  font-size: var(--text-sm);
+  font-style: italic;
+  color: var(--color-text-muted);
+  margin-bottom: clamp(var(--sp-10), 5vw, var(--sp-16));
+}
+
 /* Annotated image map */
 .artifact-map {
   position: relative;
@@ -407,22 +417,9 @@ button {
   box-shadow: 0 4px 18px rgba(0,0,0,0.35);
 }
 
-/* Tooltip */
-.hotspot__tooltip {
-  position: absolute;
-  left: calc(100% + 14px);
-  top: 50%;
-  transform: translateY(-50%) translateX(8px);
-  width: 440px;
-  max-width: 80vw;
-  background-color: var(--color-bg);
-  border: 1px solid var(--color-hairline);
-  box-shadow: 0 18px 50px rgba(0,0,0,0.16);
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity var(--dur-base), transform var(--dur-base);
-  z-index: 30;
-}
+/* Inline tooltip retained in DOM as a data source for the modal,
+   but never displayed — the modal shows the detail now. */
+.hotspot__tooltip { display: none; }
 
 .hotspot:hover .hotspot__tooltip,
 .hotspot:focus-within .hotspot__tooltip,
@@ -489,6 +486,132 @@ button {
   font-size: var(--text-xs);
   line-height: 1.7;
   color: var(--color-text-muted);
+}
+
+/* Number is clearly interactive */
+.hotspot__number { cursor: pointer; }
+
+
+/* ── Artifact modal ───────────────────────────────────────
+   Full window with a large interactive 3D viewer + text.
+   Opens on click/tap of a hotspot number.
+   ──────────────────────────────────────────────────────── */
+.amodal {
+  position: fixed;
+  inset: 0;
+  z-index: 300;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(var(--sp-4), 3vw, var(--sp-12));
+  background-color: rgba(10, 10, 10, 0.6);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+.amodal[hidden] { display: none; }
+
+.amodal__panel {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  width: min(1000px, 100%);
+  max-height: 88dvh;
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-hairline);
+  box-shadow: 0 30px 80px rgba(0,0,0,0.35);
+  overflow: hidden;
+}
+
+.amodal__viewer {
+  position: relative;
+  background-color: #eceae3;
+  min-height: 320px;
+}
+
+.amodal__canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  touch-action: none; /* let drag-rotate work on touch */
+}
+
+.amodal__hint {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: var(--sp-3);
+  text-align: center;
+  font-size: var(--text-xs);
+  letter-spacing: var(--track-wide);
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  pointer-events: none;
+}
+
+.amodal__body {
+  padding: clamp(var(--sp-6), 3vw, var(--sp-10));
+  overflow-y: auto;
+}
+
+.amodal__index {
+  font-size: var(--text-xs);
+  letter-spacing: var(--track-label);
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-bottom: var(--sp-3);
+}
+
+.amodal__title {
+  font-family: var(--font-title);
+  font-size: clamp(var(--text-xl), 2.4vw, var(--text-3xl));
+  font-weight: normal;
+  letter-spacing: var(--track-tight);
+  line-height: 1.05;
+  margin-bottom: var(--sp-5);
+}
+
+.amodal__text {
+  font-size: var(--text-sm);
+  line-height: 1.75;
+  color: var(--color-text);
+}
+
+.amodal__close {
+  position: absolute;
+  top: var(--sp-3);
+  right: var(--sp-3);
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-hairline);
+  border-radius: 50%;
+  transition: opacity var(--dur-fast);
+}
+
+.amodal__close:hover { opacity: 0.6; }
+
+/* Stack on phones — viewer on top, text below, near-fullscreen */
+@media (max-width: 760px) {
+  .amodal { padding: 0; background-color: var(--color-bg); backdrop-filter: none; -webkit-backdrop-filter: none; }
+  .amodal__panel {
+    grid-template-columns: 1fr;
+    grid-template-rows: 46dvh 1fr;
+    width: 100%;
+    max-height: 100dvh;
+    height: 100dvh;
+    border: none;
+  }
+  .amodal__viewer { min-height: 0; }
+  .amodal__close {
+    top: var(--sp-4);
+    right: var(--sp-4);
+  }
 }
 
 
@@ -1014,71 +1137,9 @@ button {
   .image-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
-/* ── Artifact hotspots on phones / touch ──────────────────
-   Tooltips become a bottom sheet that slides up when a number
-   is tapped (JS adds .is-open). A scrim dims the page behind.
-   ──────────────────────────────────────────────────────── */
+/* Bigger tap targets for hotspot dots on touch screens */
 @media (max-width: 700px) {
-
-  /* Bigger tap target for the number dots */
-  .hotspot__number { width: 32px; height: 32px; }
-
-  /* Dimming scrim while a hotspot is open */
-  body.hotspot-active::after {
-    content: "";
-    position: fixed;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.45);
-    z-index: 40;
-  }
-
-  /* All tooltip variants → full-width bottom sheet */
-  .hotspot__tooltip,
-  .hotspot--left .hotspot__tooltip,
-  .hotspot--above .hotspot__tooltip {
-    position: fixed;
-    left: 0;
-    right: 0;
-    top: auto;
-    bottom: 0;
-    width: 100%;
-    max-width: 100%;
-    transform: translateY(100%);
-    border-left: none;
-    border-right: none;
-    border-bottom: none;
-    border-radius: 0;
-    max-height: 85dvh;
-    overflow-y: auto;
-    box-shadow: 0 -12px 40px rgba(0,0,0,0.25);
-    z-index: 50;
-  }
-
-  /* Open state slides the sheet up */
-  .hotspot.is-open .hotspot__tooltip,
-  .hotspot--left.is-open .hotspot__tooltip,
-  .hotspot--above.is-open .hotspot__tooltip {
-    transform: translateY(0);
-  }
-
-  /* On touch, hover must NOT reveal the sheet (only .is-open) */
-  .hotspot:hover .hotspot__tooltip,
-  .hotspot--left:hover .hotspot__tooltip,
-  .hotspot--above:hover .hotspot__tooltip {
-    transform: translateY(100%);
-  }
-  .hotspot.is-open:hover .hotspot__tooltip,
-  .hotspot--left.is-open:hover .hotspot__tooltip,
-  .hotspot--above.is-open:hover .hotspot__tooltip {
-    transform: translateY(0);
-  }
-
-  /* Constrain the 3D canvas height inside the sheet */
-  .hotspot__canvas { aspect-ratio: 16 / 11; }
-
-  /* Roomier text in the sheet */
-  .hotspot__body { padding: var(--sp-5) var(--sp-6) var(--sp-8); }
-  .hotspot__text { font-size: var(--text-sm); }
+  .hotspot__number { width: 34px; height: 34px; font-size: var(--text-sm); }
 }
 
 /* Lightbox controls: tighter on small screens */
