@@ -66,6 +66,7 @@
   ─────────────────────────────────────────────────────── */
   const lightbox        = document.getElementById('lightbox');
   const lightboxImg     = document.getElementById('lightbox-img');
+  const lightboxVideo   = document.getElementById('lightbox-video');
   const lightboxCaption = document.getElementById('lightbox-caption');
   const lightboxCounter = document.getElementById('lightbox-counter');
   const lightboxClose   = document.getElementById('lightbox-close');
@@ -76,21 +77,41 @@
   let   currentIndex = 0;
   let   previousFocus = null;
 
-  function getImageData(index) {
+  function getMediaData(index) {
     const item    = imageItems[index];
     const img     = item?.querySelector('img');
+    const source  = item?.querySelector('video source');
     const caption = item?.querySelector('figcaption');
+    const isVideo = !!source;
     return {
-      src:     img?.src ?? '',
+      type:    isVideo ? 'video' : 'image',
+      src:     isVideo ? source.getAttribute('src') : (img?.getAttribute('src') ?? ''),
       alt:     img?.alt ?? '',
       caption: caption?.textContent?.trim() ?? '',
     };
   }
 
-  function updateLightboxImage(index) {
-    const data = getImageData(index);
-    lightboxImg.src             = data.src;
-    lightboxImg.alt             = data.alt;
+  function updateLightboxMedia(index) {
+    const data = getMediaData(index);
+
+    // Always pause/reset the previous video before switching
+    lightboxVideo.pause();
+
+    if (data.type === 'video') {
+      lightboxImg.hidden = true;
+      lightboxImg.removeAttribute('src');
+      lightboxVideo.src    = data.src;
+      lightboxVideo.hidden = false;
+      lightboxVideo.currentTime = 0;
+      lightboxVideo.play().catch(() => {});
+    } else {
+      lightboxVideo.hidden = true;
+      lightboxVideo.removeAttribute('src');
+      lightboxImg.src    = data.src;
+      lightboxImg.alt    = data.alt;
+      lightboxImg.hidden = false;
+    }
+
     lightboxCaption.textContent = data.caption;
     lightboxCounter.textContent = `${index + 1} / ${imageItems.length}`;
     currentIndex = index;
@@ -98,7 +119,7 @@
 
   function openLightbox(index) {
     previousFocus = document.activeElement;
-    updateLightboxImage(index);
+    updateLightboxMedia(index);
     lightbox.hidden = false;
     document.body.style.overflow = 'hidden';
     lightboxClose.focus();
@@ -106,6 +127,7 @@
   }
 
   function closeLightbox() {
+    lightboxVideo.pause();
     lightbox.hidden = true;
     document.body.style.overflow = '';
     removeFocusTrap();
@@ -113,15 +135,18 @@
   }
 
   function prevImage() {
-    updateLightboxImage((currentIndex - 1 + imageItems.length) % imageItems.length);
+    updateLightboxMedia((currentIndex - 1 + imageItems.length) % imageItems.length);
   }
 
   function nextImage() {
-    updateLightboxImage((currentIndex + 1) % imageItems.length);
+    updateLightboxMedia((currentIndex + 1) % imageItems.length);
   }
 
-  document.querySelectorAll('.image-grid__btn').forEach((btn, i) => {
-    btn.addEventListener('click', () => openLightbox(i));
+  // Make every item clickable — images (button) and videos (wrap)
+  imageItems.forEach((item, i) => {
+    const trigger = item.querySelector('.image-grid__btn')
+                 || item.querySelector('.image-grid__video-wrap');
+    if (trigger) trigger.addEventListener('click', () => openLightbox(i));
   });
 
   lightboxClose?.addEventListener('click', closeLightbox);
@@ -278,18 +303,59 @@
       canvas._stop  = () => { running = false; };
     }
 
-    // Lazy-init + start/stop on hotspot hover
-    document.querySelectorAll('.hotspot').forEach(hotspot => {
-      const canvas = hotspot.querySelector('.hotspot__canvas');
-      if (!canvas) return;
+    // Interaction: hover (desktop) + tap-toggle (touch / mobile)
+    const hotspots = Array.from(document.querySelectorAll('.hotspot'));
 
+    function openHotspot(hotspot) {
+      hotspots.forEach(h => { if (h !== hotspot) closeHotspot(h); });
+      hotspot.classList.add('is-open');
+      document.body.classList.add('hotspot-active');
+      const c = hotspot.querySelector('.hotspot__canvas');
+      if (c) { initHotspotViewer(c); c._start?.(); }
+    }
+
+    function closeHotspot(hotspot) {
+      hotspot.classList.remove('is-open');
+      const c = hotspot.querySelector('.hotspot__canvas');
+      if (c) c._stop?.();
+      if (!document.querySelector('.hotspot.is-open')) {
+        document.body.classList.remove('hotspot-active');
+      }
+    }
+
+    hotspots.forEach(hotspot => {
+      const canvas = hotspot.querySelector('.hotspot__canvas');
+      const number = hotspot.querySelector('.hotspot__number');
+
+      // Desktop hover spins up the model
       hotspot.addEventListener('mouseenter', () => {
-        initHotspotViewer(canvas);
-        canvas._start?.();
+        if (canvas) { initHotspotViewer(canvas); canvas._start?.(); }
       });
       hotspot.addEventListener('mouseleave', () => {
-        canvas._stop?.();
+        if (!hotspot.classList.contains('is-open')) canvas?._stop?.();
       });
+
+      // Tap / click the number toggles open — essential on touch
+      if (number) {
+        number.setAttribute('tabindex', '0');
+        number.setAttribute('role', 'button');
+        const toggle = (e) => {
+          e.stopPropagation();
+          hotspot.classList.contains('is-open') ? closeHotspot(hotspot) : openHotspot(hotspot);
+        };
+        number.addEventListener('click', toggle);
+        number.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(e); }
+        });
+      }
+    });
+
+    // Tap outside / Esc closes any open hotspot
+    document.addEventListener('click', (e) => {
+      if (!e.target.closest('.hotspot')) hotspots.forEach(closeHotspot);
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') hotspots.forEach(closeHotspot);
     });
   }
 

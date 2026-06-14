@@ -401,7 +401,8 @@ button {
 }
 
 .hotspot:hover .hotspot__number,
-.hotspot:focus-within .hotspot__number {
+.hotspot:focus-within .hotspot__number,
+.hotspot.is-open .hotspot__number {
   transform: scale(1.2);
   box-shadow: 0 4px 18px rgba(0,0,0,0.35);
 }
@@ -424,7 +425,8 @@ button {
 }
 
 .hotspot:hover .hotspot__tooltip,
-.hotspot:focus-within .hotspot__tooltip {
+.hotspot:focus-within .hotspot__tooltip,
+.hotspot.is-open .hotspot__tooltip {
   opacity: 1;
   pointer-events: auto;
   transform: translateY(-50%) translateX(0);
@@ -437,7 +439,8 @@ button {
   transform: translateY(-50%) translateX(-8px);
 }
 .hotspot--left:hover .hotspot__tooltip,
-.hotspot--left:focus-within .hotspot__tooltip {
+.hotspot--left:focus-within .hotspot__tooltip,
+.hotspot--left.is-open .hotspot__tooltip {
   transform: translateY(-50%) translateX(0);
 }
 
@@ -449,7 +452,8 @@ button {
   transform: translateX(-50%) translateY(-8px);
 }
 .hotspot--above:hover .hotspot__tooltip,
-.hotspot--above:focus-within .hotspot__tooltip {
+.hotspot--above:focus-within .hotspot__tooltip,
+.hotspot--above.is-open .hotspot__tooltip {
   transform: translateX(-50%) translateY(0);
 }
 
@@ -740,11 +744,32 @@ button {
 
 /* Video items — match image sizing exactly */
 .image-grid__video-wrap {
+  position: relative;
   overflow: hidden;
   aspect-ratio: 1 / 1;
   background-color: #0a0a0a;
   line-height: 0;
+  cursor: pointer;
 }
+
+/* Play cue overlay on video tiles */
+.image-grid__video-wrap::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  transform: translate(-40%, -50%);
+  border-style: solid;
+  border-width: 9px 0 9px 15px;
+  border-color: transparent transparent transparent rgba(255,255,255,0.9);
+  filter: drop-shadow(0 1px 3px rgba(0,0,0,0.5));
+  pointer-events: none;
+  transition: opacity var(--dur-base);
+}
+
+.image-grid__video-wrap:hover::after { opacity: 0.7; }
 
 .image-grid__video-wrap video {
   width: 100%;
@@ -776,11 +801,15 @@ button {
   max-height: 90dvh;
 }
 
-.lightbox__img {
+.lightbox__img,
+.lightbox__video {
   max-width: 100%;
   max-height: 78dvh;
   object-fit: contain;
 }
+
+.lightbox__img[hidden],
+.lightbox__video[hidden] { display: none; }
 
 .lightbox__meta {
   margin-top: var(--sp-4);
@@ -963,6 +992,101 @@ button {
 
 .footer__email:hover {
   color: var(--color-text);
+}
+
+
+/* ============================================================
+   MOBILE / PHONE REFINEMENTS
+   ============================================================ */
+
+/* Hero subtitle: allow wrapping on small screens */
+@media (max-width: 640px) {
+  .hero__subtitle {
+    white-space: normal;
+    line-height: 1.6;
+    max-width: 26ch;
+  }
+  .hero__title { line-height: 1.0; }
+}
+
+/* Gallery: 2 columns on the smallest screens reads better than 3 */
+@media (max-width: 460px) {
+  .image-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* ── Artifact hotspots on phones / touch ──────────────────
+   Tooltips become a bottom sheet that slides up when a number
+   is tapped (JS adds .is-open). A scrim dims the page behind.
+   ──────────────────────────────────────────────────────── */
+@media (max-width: 700px) {
+
+  /* Bigger tap target for the number dots */
+  .hotspot__number { width: 32px; height: 32px; }
+
+  /* Dimming scrim while a hotspot is open */
+  body.hotspot-active::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+    z-index: 40;
+  }
+
+  /* All tooltip variants → full-width bottom sheet */
+  .hotspot__tooltip,
+  .hotspot--left .hotspot__tooltip,
+  .hotspot--above .hotspot__tooltip {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: auto;
+    bottom: 0;
+    width: 100%;
+    max-width: 100%;
+    transform: translateY(100%);
+    border-left: none;
+    border-right: none;
+    border-bottom: none;
+    border-radius: 0;
+    max-height: 85dvh;
+    overflow-y: auto;
+    box-shadow: 0 -12px 40px rgba(0,0,0,0.25);
+    z-index: 50;
+  }
+
+  /* Open state slides the sheet up */
+  .hotspot.is-open .hotspot__tooltip,
+  .hotspot--left.is-open .hotspot__tooltip,
+  .hotspot--above.is-open .hotspot__tooltip {
+    transform: translateY(0);
+  }
+
+  /* On touch, hover must NOT reveal the sheet (only .is-open) */
+  .hotspot:hover .hotspot__tooltip,
+  .hotspot--left:hover .hotspot__tooltip,
+  .hotspot--above:hover .hotspot__tooltip {
+    transform: translateY(100%);
+  }
+  .hotspot.is-open:hover .hotspot__tooltip,
+  .hotspot--left.is-open:hover .hotspot__tooltip,
+  .hotspot--above.is-open:hover .hotspot__tooltip {
+    transform: translateY(0);
+  }
+
+  /* Constrain the 3D canvas height inside the sheet */
+  .hotspot__canvas { aspect-ratio: 16 / 11; }
+
+  /* Roomier text in the sheet */
+  .hotspot__body { padding: var(--sp-5) var(--sp-6) var(--sp-8); }
+  .hotspot__text { font-size: var(--text-sm); }
+}
+
+/* Lightbox controls: tighter on small screens */
+@media (max-width: 600px) {
+  .lightbox__nav   { padding: var(--sp-2); }
+  .lightbox__prev  { left: 0; }
+  .lightbox__next  { right: 0; }
+  .lightbox__close { top: var(--sp-3); right: var(--sp-3); }
 }
 
 
