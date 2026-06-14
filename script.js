@@ -9,6 +9,57 @@
     window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 
+  /* ── Navigation ─────────────────────────────────────────
+     Transparent over the hero, gains a solid background once
+     scrolled past it. Hamburger toggles a panel on mobile, and
+     the current section's link is highlighted while scrolling.
+  ─────────────────────────────────────────────────────── */
+  (function nav() {
+    const navEl  = document.getElementById('site-nav');
+    const toggle = document.getElementById('nav-toggle');
+    const menu   = document.getElementById('nav-menu');
+    const heroEl = document.getElementById('hero');
+    if (!navEl) return;
+
+    // Solid background once the hero is mostly scrolled away
+    function onScroll() {
+      const threshold = (heroEl ? heroEl.offsetHeight : window.innerHeight) - 80;
+      navEl.classList.toggle('is-scrolled', window.scrollY > threshold);
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+
+    // Mobile hamburger
+    function closeMenu() {
+      navEl.classList.remove('is-open');
+      toggle?.setAttribute('aria-expanded', 'false');
+    }
+    toggle?.addEventListener('click', () => {
+      const open = navEl.classList.toggle('is-open');
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    menu?.querySelectorAll('.nav__link').forEach(link => {
+      link.addEventListener('click', closeMenu);
+    });
+
+    // Active-link highlight via the section in the viewport's middle band
+    if ('IntersectionObserver' in window) {
+      const sections = ['statement', 'artifact', 'process', 'images', 'references']
+        .map(id => document.getElementById(id)).filter(Boolean);
+
+      const obs = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+          if (!e.isIntersecting) return;
+          menu?.querySelectorAll('.nav__link').forEach(a => a.classList.remove('is-active'));
+          menu?.querySelector(`a[href="#${e.target.id}"]`)?.classList.add('is-active');
+        });
+      }, { rootMargin: '-45% 0px -45% 0px', threshold: 0 });
+
+      sections.forEach(s => obs.observe(s));
+    }
+  })();
+
+
   /* ── Scroll reveal (IntersectionObserver) ───────────────
      Observes each .reveal-section. When it enters the viewport
      its .reveal-el children fade + slide up with a stagger.

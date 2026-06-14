@@ -21,13 +21,36 @@
   <meta name="twitter:image"       content="assets/hero-poster.jpg" />
   <meta name="twitter:creator"     content="@marcimiha" />
 
-  <link rel="stylesheet" href="styles.css?v=13" />
+  <link rel="stylesheet" href="styles.css?v=15" />
   <script src="three.min.js"></script>
   <script src="GLTFLoader.js"></script>
   <script src="OrbitControls.js"></script>
   <script src="meshopt_decoder.js?v=2"></script>
 </head>
 <body>
+
+  <!-- ═══════════════════════════════════════════════════════
+       NAV
+  ═══════════════════════════════════════════════════════ -->
+  <header class="nav" id="site-nav">
+    <div class="nav__inner">
+      <a href="#hero" class="nav__brand">The Garden of the Human Echoes</a>
+
+      <button class="nav__toggle" id="nav-toggle" aria-label="Open menu"
+              aria-expanded="false" aria-controls="nav-menu">
+        <span></span><span></span>
+      </button>
+
+      <nav class="nav__menu" id="nav-menu" aria-label="Primary">
+        <a href="#statement"  class="nav__link">About</a>
+        <a href="#artifact"   class="nav__link">Artifact</a>
+        <a href="#process"    class="nav__link">Process and Thoughts</a>
+        <a href="#images"     class="nav__link">Gallery</a>
+        <a href="#references" class="nav__link">Bibliography</a>
+      </nav>
+    </div>
+  </header>
+
 
   <!-- ═══════════════════════════════════════════════════════
        HERO
@@ -369,48 +392,6 @@
             <img src="assets/artifact8.jpg" alt="The Garden of the Human Echoes — generative output still" loading="lazy" sizes="(max-width:600px) 33vw, 20vw" />
           </button>
           <figcaption><em>Final artifact outcome still 8</em></figcaption>
-        </figure>
-
-        <figure class="image-grid__item reveal-el" role="listitem">
-          <button class="image-grid__btn" aria-label="View image 1" data-index="0">
-            <img src="assets/20260423_231643.jpg" alt="The Garden of the Human Echoes — documentation" loading="lazy" sizes="(max-width:600px) 33vw, 20vw" />
-          </button>
-          <figcaption><em>First test image 1</em></figcaption>
-        </figure>
-
-        <figure class="image-grid__item reveal-el" role="listitem">
-          <button class="image-grid__btn" aria-label="View image 2" data-index="1">
-            <img src="assets/20260423_231747.jpg" alt="The Garden of the Human Echoes — documentation" loading="lazy" sizes="(max-width:600px) 33vw, 20vw" />
-          </button>
-          <figcaption><em>First test image 2</em></figcaption>
-        </figure>
-
-        <figure class="image-grid__item reveal-el" role="listitem">
-          <button class="image-grid__btn" aria-label="View image 3" data-index="2">
-            <img src="assets/20260423_231850.jpg" alt="The Garden of the Human Echoes — documentation" loading="lazy" sizes="(max-width:600px) 33vw, 20vw" />
-          </button>
-          <figcaption><em>First test image 3</em></figcaption>
-        </figure>
-
-        <figure class="image-grid__item reveal-el" role="listitem">
-          <button class="image-grid__btn" aria-label="View image 4" data-index="3">
-            <img src="assets/20260423_231951.jpg" alt="The Garden of the Human Echoes — documentation" loading="lazy" sizes="(max-width:600px) 33vw, 20vw" />
-          </button>
-          <figcaption><em>First test image 4</em></figcaption>
-        </figure>
-
-        <figure class="image-grid__item reveal-el" role="listitem">
-          <button class="image-grid__btn" aria-label="View image 5" data-index="4">
-            <img src="assets/20260423_232053.jpg" alt="The Garden of the Human Echoes — documentation" loading="lazy" sizes="(max-width:600px) 33vw, 20vw" />
-          </button>
-          <figcaption><em>First test image 5</em></figcaption>
-        </figure>
-
-        <figure class="image-grid__item reveal-el" role="listitem">
-          <button class="image-grid__btn" aria-label="View image 6" data-index="5">
-            <img src="assets/20260423_232155.jpg" alt="The Garden of the Human Echoes — documentation" loading="lazy" sizes="(max-width:600px) 33vw, 20vw" />
-          </button>
-          <figcaption><em>First test image 6</em></figcaption>
         </figure>
 
         <figure class="image-grid__item reveal-el" role="listitem">
@@ -924,6 +905,48 @@
           <figcaption><em>Iteration 2 image</em></figcaption>
         </figure>
 
+        <figure class="image-grid__item reveal-el" role="listitem">
+          <button class="image-grid__btn" aria-label="View image 1" data-index="0">
+            <img src="assets/20260423_231643.jpg" alt="The Garden of the Human Echoes — documentation" loading="lazy" sizes="(max-width:600px) 33vw, 20vw" />
+          </button>
+          <figcaption><em>First test image 1</em></figcaption>
+        </figure>
+
+        <figure class="image-grid__item reveal-el" role="listitem">
+          <button class="image-grid__btn" aria-label="View image 2" data-index="1">
+            <img src="assets/20260423_231747.jpg" alt="The Garden of the Human Echoes — documentation" loading="lazy" sizes="(max-width:600px) 33vw, 20vw" />
+          </button>
+          <figcaption><em>First test image 2</em></figcaption>
+        </figure>
+
+        <figure class="image-grid__item reveal-el" role="listitem">
+          <button class="image-grid__btn" aria-label="View image 3" data-index="2">
+            <img src="assets/20260423_231850.jpg" alt="The Garden of the Human Echoes — documentation" loading="lazy" sizes="(max-width:600px) 33vw, 20vw" />
+          </button>
+          <figcaption><em>First test image 3</em></figcaption>
+        </figure>
+
+        <figure class="image-grid__item reveal-el" role="listitem">
+          <button class="image-grid__btn" aria-label="View image 4" data-index="3">
+            <img src="assets/20260423_231951.jpg" alt="The Garden of the Human Echoes — documentation" loading="lazy" sizes="(max-width:600px) 33vw, 20vw" />
+          </button>
+          <figcaption><em>First test image 4</em></figcaption>
+        </figure>
+
+        <figure class="image-grid__item reveal-el" role="listitem">
+          <button class="image-grid__btn" aria-label="View image 5" data-index="4">
+            <img src="assets/20260423_232053.jpg" alt="The Garden of the Human Echoes — documentation" loading="lazy" sizes="(max-width:600px) 33vw, 20vw" />
+          </button>
+          <figcaption><em>First test image 5</em></figcaption>
+        </figure>
+
+        <figure class="image-grid__item reveal-el" role="listitem">
+          <button class="image-grid__btn" aria-label="View image 6" data-index="5">
+            <img src="assets/20260423_232155.jpg" alt="The Garden of the Human Echoes — documentation" loading="lazy" sizes="(max-width:600px) 33vw, 20vw" />
+          </button>
+          <figcaption><em>First test image 6</em></figcaption>
+        </figure>
+
       </div><!-- end .image-grid -->
 
     <button class="gallery-expand" id="gallery-expand" aria-expanded="false">
@@ -1085,6 +1108,6 @@
     </div>
   </footer>
 
-  <script src="script.js?v=6"></script>
+  <script src="script.js?v=7"></script>
 </body>
 </html>
